@@ -66,9 +66,17 @@ class handler(BaseHTTPRequestHandler):
                         base_where = "WHERE s.title LIKE ?"
                         where_params = [f'%{keyword}%']
                     elif search_type == 'dialogue_only':
-                        # Only search in character dialogue 
-                        base_where = "WHERE (cdu.dialogue_text LIKE ? OR cdu.character_name LIKE ?) AND LENGTH(cdu.character_name) > 0 AND LENGTH(cdu.dialogue_text) > 0"
-                        where_params = [f'%{keyword}%', f'%{keyword}%']
+                        # Search for dialogue AND scripts where title/instructions contain keyword
+                        base_where = """WHERE (
+                            (cdu.dialogue_text LIKE ? OR cdu.character_name LIKE ?) 
+                            OR 
+                            cdu.script_id IN (
+                                SELECT DISTINCT s2.id FROM scripts s2 
+                                JOIN character_dialogue_unified cdu2 ON s2.id = cdu2.script_id
+                                WHERE s2.title LIKE ? OR cdu2.filming_audio_instructions LIKE ?
+                            )
+                        ) AND LENGTH(cdu.character_name) > 0 AND LENGTH(cdu.dialogue_text) > 0"""
+                        where_params = [f'%{keyword}%', f'%{keyword}%', f'%{keyword}%', f'%{keyword}%']
                     else:
                         # Search all fields (default)
                         base_where = "WHERE (cdu.dialogue_text LIKE ? OR cdu.character_name LIKE ? OR s.title LIKE ? OR cdu.filming_audio_instructions LIKE ?)"
@@ -103,15 +111,22 @@ class handler(BaseHTTPRequestHandler):
                         cursor.execute(title_query, [f'%{keyword}%'])
                         debug_info['title_matches'] = cursor.fetchone()[0]
                         
-                        # Count dialogue matches (character dialogue only)
+                        # Count dialogue matches (includes related scripts)
                         dialogue_query = f"""
                         SELECT COUNT(*) 
                         FROM character_dialogue_unified cdu
                         JOIN scripts s ON cdu.script_id = s.id
-                        WHERE (cdu.dialogue_text LIKE ? OR cdu.character_name LIKE ?) 
-                          AND LENGTH(cdu.character_name) > 0 AND LENGTH(cdu.dialogue_text) > 0
+                        WHERE (
+                            (cdu.dialogue_text LIKE ? OR cdu.character_name LIKE ?) 
+                            OR 
+                            cdu.script_id IN (
+                                SELECT DISTINCT s2.id FROM scripts s2 
+                                JOIN character_dialogue_unified cdu2 ON s2.id = cdu2.script_id
+                                WHERE s2.title LIKE ? OR cdu2.filming_audio_instructions LIKE ?
+                            )
+                        ) AND LENGTH(cdu.character_name) > 0 AND LENGTH(cdu.dialogue_text) > 0
                         """
-                        cursor.execute(dialogue_query, [f'%{keyword}%', f'%{keyword}%'])
+                        cursor.execute(dialogue_query, [f'%{keyword}%', f'%{keyword}%', f'%{keyword}%', f'%{keyword}%'])
                         debug_info['dialogue_matches'] = cursor.fetchone()[0]
                         
                         # Count instruction matches (filming_audio_instructions)
@@ -203,7 +218,7 @@ class handler(BaseHTTPRequestHandler):
                         'total_count': total_count,
                         'has_more': total_count > (offset + len(formatted_results)),
                         'debug_info': debug_info if debug_info else None,
-                        'database_info': f'検索対象: 統一構造データベース（|キャラクター|セリフ| と |撮影・音声指示| に分離整理済み）'
+                        'database_info': f'検索対象: 統一構造データベース（セリフ検索時は関連タイトル・制作指示からもセリフを表示）'
                     }
                     
                 except Exception as db_error:
