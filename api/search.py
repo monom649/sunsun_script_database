@@ -66,17 +66,11 @@ class handler(BaseHTTPRequestHandler):
                         base_where = "WHERE s.title LIKE ?"
                         where_params = [f'%{keyword}%']
                     elif search_type == 'dialogue_only':
-                        # Search for dialogue AND scripts where title/instructions contain keyword
-                        base_where = """WHERE (
-                            (cdu.dialogue_text LIKE ? OR cdu.character_name LIKE ?) 
-                            OR 
-                            cdu.script_id IN (
-                                SELECT DISTINCT s2.id FROM scripts s2 
-                                JOIN character_dialogue_unified cdu2 ON s2.id = cdu2.script_id
-                                WHERE s2.title LIKE ? OR cdu2.filming_audio_instructions LIKE ?
-                            )
-                        ) AND LENGTH(cdu.character_name) > 0 AND LENGTH(cdu.dialogue_text) > 0"""
-                        where_params = [f'%{keyword}%', f'%{keyword}%', f'%{keyword}%', f'%{keyword}%']
+                        # Search for dialogue AND scripts where title contains keyword (simpler approach)
+                        base_where = """WHERE LENGTH(cdu.character_name) > 0 AND LENGTH(cdu.dialogue_text) > 0 AND (
+                            cdu.dialogue_text LIKE ? OR cdu.character_name LIKE ? OR s.title LIKE ?
+                        )"""
+                        where_params = [f'%{keyword}%', f'%{keyword}%', f'%{keyword}%']
                     else:
                         # Search all fields (default)
                         base_where = "WHERE (cdu.dialogue_text LIKE ? OR cdu.character_name LIKE ? OR s.title LIKE ? OR cdu.filming_audio_instructions LIKE ?)"
@@ -111,22 +105,16 @@ class handler(BaseHTTPRequestHandler):
                         cursor.execute(title_query, [f'%{keyword}%'])
                         debug_info['title_matches'] = cursor.fetchone()[0]
                         
-                        # Count dialogue matches (includes related scripts)
+                        # Count dialogue matches (includes related scripts)  
                         dialogue_query = f"""
                         SELECT COUNT(*) 
                         FROM character_dialogue_unified cdu
                         JOIN scripts s ON cdu.script_id = s.id
-                        WHERE (
-                            (cdu.dialogue_text LIKE ? OR cdu.character_name LIKE ?) 
-                            OR 
-                            cdu.script_id IN (
-                                SELECT DISTINCT s2.id FROM scripts s2 
-                                JOIN character_dialogue_unified cdu2 ON s2.id = cdu2.script_id
-                                WHERE s2.title LIKE ? OR cdu2.filming_audio_instructions LIKE ?
-                            )
-                        ) AND LENGTH(cdu.character_name) > 0 AND LENGTH(cdu.dialogue_text) > 0
+                        WHERE LENGTH(cdu.character_name) > 0 AND LENGTH(cdu.dialogue_text) > 0 AND (
+                            cdu.dialogue_text LIKE ? OR cdu.character_name LIKE ? OR s.title LIKE ?
+                        )
                         """
-                        cursor.execute(dialogue_query, [f'%{keyword}%', f'%{keyword}%', f'%{keyword}%', f'%{keyword}%'])
+                        cursor.execute(dialogue_query, [f'%{keyword}%', f'%{keyword}%', f'%{keyword}%'])
                         debug_info['dialogue_matches'] = cursor.fetchone()[0]
                         
                         # Count instruction matches (filming_audio_instructions)
