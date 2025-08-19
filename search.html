@@ -60,6 +60,11 @@
             </div>
         </div>
         <div id="resultsList"></div>
+        <div id="pagination" style="display: none; text-align: center; margin: 20px; padding: 20px;">
+            <button id="prevPage" onclick="loadPreviousPage()" style="margin: 0 10px; padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">← 前のページ</button>
+            <span id="pageInfo" style="margin: 0 20px; font-weight: bold;"></span>
+            <button id="nextPage" onclick="loadNextPage()" style="margin: 0 10px; padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">次のページ →</button>
+        </div>
     </div>
     
     <div id="error" style="display: none; color: red;"></div>
@@ -67,8 +72,12 @@
     <script>
         let currentSearchResults = [];
         let currentKeyword = '';
+        let currentPage = 0;
+        let currentLimit = 50;
+        let currentTotalCount = 0;
+        let currentSearchData = null;
         
-        async function performSearch() {
+        async function performSearch(offset = 0) {
             var keyword = document.getElementById('keyword').value.trim();
             var limit = document.getElementById('limitResults').value;
             
@@ -81,7 +90,7 @@
             showLoading();
             
             try {
-                console.log('検索リクエスト開始:', { keyword, limit });
+                console.log('検索リクエスト開始:', { keyword, limit, offset });
                 
                 var response = await fetch('/api/search', {
                     method: 'POST',
@@ -92,7 +101,8 @@
                         keyword: keyword,
                         character_filter: '',
                         sort_order: 'management_id_asc',
-                        limit: parseInt(limit)
+                        limit: parseInt(limit),
+                        offset: offset
                     })
                 });
                 
@@ -108,7 +118,12 @@
                 if (data.success) {
                     currentSearchResults = data.results;
                     currentKeyword = keyword;
+                    currentLimit = parseInt(limit);
+                    currentTotalCount = data.total_count || data.count;
+                    currentSearchData = data;
+                    currentPage = Math.floor(offset / currentLimit);
                     displayResults(data);
+                    updatePagination(data);
                 } else {
                     showError('エラー: ' + data.error);
                 }
@@ -249,11 +264,20 @@
             var contentFilter = document.getElementById('contentFilter').value;
             var sortOrder = document.getElementById('sortOrderPost').value;
             
-            var filteredResults = applyContentFilter(currentSearchResults, contentFilter);
-            var sortedResults = sortResults(filteredResults, sortOrder);
-            
-            displayResultsList(sortedResults);
-            updateResultsHeader(sortedResults.length, contentFilter);
+            if (contentFilter === '' || contentFilter === 'dialogue_voice_filming') {
+                // No filter or dialogue filter - show current results as-is
+                // (New database already filters to dialogue only)
+                var sortedResults = sortResults(currentSearchResults, sortOrder);
+                displayResultsList(sortedResults);
+                updateResultsHeader(sortedResults.length, contentFilter);
+            } else if (contentFilter === 'title') {
+                // Title filter - need to search again with different parameters
+                // For now, filter current results
+                var filteredResults = applyContentFilter(currentSearchResults, contentFilter);
+                var sortedResults = sortResults(filteredResults, sortOrder);
+                displayResultsList(sortedResults);
+                updateResultsHeader(sortedResults.length, contentFilter);
+            }
         }
         
         // コンテンツフィルター適用
@@ -344,6 +368,42 @@
                 filterInfo = ' | セリフ・音声指示・撮影指示';
             }
             headerDiv.innerHTML = '検索結果: "' + currentKeyword + '" (' + count + '件)' + filterInfo;
+        }
+        
+        // ページネーション更新
+        function updatePagination(data) {
+            var paginationDiv = document.getElementById('pagination');
+            var prevBtn = document.getElementById('prevPage');
+            var nextBtn = document.getElementById('nextPage');
+            var pageInfo = document.getElementById('pageInfo');
+            
+            if (data.total_count && data.total_count > currentLimit) {
+                paginationDiv.style.display = 'block';
+                
+                // Update page info
+                pageInfo.innerHTML = 'ページ ' + (currentPage + 1) + ' / ' + Math.ceil(data.total_count / currentLimit);
+                
+                // Update button states
+                prevBtn.disabled = data.offset === 0;
+                nextBtn.disabled = !data.has_more;
+                
+                prevBtn.style.opacity = prevBtn.disabled ? '0.5' : '1';
+                nextBtn.style.opacity = nextBtn.disabled ? '0.5' : '1';
+            } else {
+                paginationDiv.style.display = 'none';
+            }
+        }
+        
+        // 次のページを読み込み
+        function loadNextPage() {
+            var nextOffset = (currentPage + 1) * currentLimit;
+            performSearch(nextOffset);
+        }
+        
+        // 前のページを読み込み
+        function loadPreviousPage() {
+            var prevOffset = Math.max(0, (currentPage - 1) * currentLimit);
+            performSearch(prevOffset);
         }
         
         // ページ読み込み時の認証チェック
