@@ -48,8 +48,8 @@ class handler(BaseHTTPRequestHandler):
             else:
                 # Search in real database from Dropbox
                 try:
-                    # Dropbox direct download URL - reorganized database
-                    dropbox_url = 'https://www.dropbox.com/scl/fi/ofuqpug3tstgpdqu0dvcr/youtube_search_complete_all.db?rlkey=y4al959fd7tdozin51mc9yblz&st=juxz0zgt&dl=1'
+                    # Dropbox direct download URL - unified structure database
+                    dropbox_url = 'https://www.dropbox.com/scl/fi/ofuqpug3tstgpdqu0dvcr/youtube_search_complete_all.db?rlkey=y4al959fd7tdozin51mc9yblz&st=fbg9kgyz&dl=1'
                     
                     # Download database to temporary file
                     with tempfile.NamedTemporaryFile(delete=False, suffix='.db') as temp_db:
