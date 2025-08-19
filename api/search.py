@@ -60,17 +60,17 @@ class handler(BaseHTTPRequestHandler):
                     conn = sqlite3.connect(db_path)
                     cursor = conn.cursor()
                     
-                    # Build WHERE clause based on search type using unified structure
+                    # Build WHERE clause - using unified table structure
                     if search_type == 'title_only':
                         # Only search in titles
                         base_where = "WHERE s.title LIKE ?"
                         where_params = [f'%{keyword}%']
                     elif search_type == 'dialogue_only':
-                        # Only search in character dialogue (not instructions)
-                        base_where = "WHERE (cdu.dialogue_text LIKE ? OR cdu.character_name LIKE ?) AND cdu.character_name != '' AND cdu.dialogue_text != ''"
+                        # Only search in character dialogue 
+                        base_where = "WHERE (cdu.dialogue_text LIKE ? OR cdu.character_name LIKE ?) AND LENGTH(cdu.character_name) > 0 AND LENGTH(cdu.dialogue_text) > 0"
                         where_params = [f'%{keyword}%', f'%{keyword}%']
                     else:
-                        # Search all fields (default) - dialogue, character names, titles, and instructions
+                        # Search all fields (default)
                         base_where = "WHERE (cdu.dialogue_text LIKE ? OR cdu.character_name LIKE ? OR s.title LIKE ? OR cdu.filming_audio_instructions LIKE ?)"
                         where_params = [f'%{keyword}%', f'%{keyword}%', f'%{keyword}%', f'%{keyword}%']
                     
@@ -109,12 +109,12 @@ class handler(BaseHTTPRequestHandler):
                         FROM character_dialogue_unified cdu
                         JOIN scripts s ON cdu.script_id = s.id
                         WHERE (cdu.dialogue_text LIKE ? OR cdu.character_name LIKE ?) 
-                          AND cdu.character_name != '' AND cdu.dialogue_text != ''
+                          AND LENGTH(cdu.character_name) > 0 AND LENGTH(cdu.dialogue_text) > 0
                         """
                         cursor.execute(dialogue_query, [f'%{keyword}%', f'%{keyword}%'])
                         debug_info['dialogue_matches'] = cursor.fetchone()[0]
                         
-                        # Count instruction matches
+                        # Count instruction matches (filming_audio_instructions)
                         instruction_query = f"""
                         SELECT COUNT(*) 
                         FROM character_dialogue_unified cdu
@@ -128,7 +128,7 @@ class handler(BaseHTTPRequestHandler):
                     data_query = f"""
                     SELECT s.management_id, s.title, s.broadcast_date, cdu.character_name, cdu.dialogue_text, 
                            cdu.filming_audio_instructions, s.script_url, cdu.row_number,
-                           CASE WHEN cdu.character_name != '' AND cdu.dialogue_text != '' THEN 'dialogue' 
+                           CASE WHEN LENGTH(cdu.character_name) > 0 AND LENGTH(cdu.dialogue_text) > 0 THEN 'dialogue' 
                                 ELSE 'instruction' END as content_type
                     FROM character_dialogue_unified cdu
                     JOIN scripts s ON cdu.script_id = s.id
