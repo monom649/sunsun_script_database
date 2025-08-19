@@ -1,0 +1,15 @@
+{
+  "name": "sunsun-auth-search-v2",
+  "version": "2.0.0",
+  "description": "SunSun Kids TV Script Search with Authentication",
+  "main": "index.html",
+  "scripts": {
+    "start": "echo 'Static site'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/monom649/sunsun_scrept_search.git"
+  },
+  "author": "SunSun Kids TV",
+  "license": "MIT"
+}

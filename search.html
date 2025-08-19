@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>サンサンキッズTV 台本検索システム</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>🎬 サンサンキッズTV 台本検索システム</h1>
+    
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <div style="flex: 1;">
+            <div style="margin-bottom: 10px;">
+                <label>🔍 検索キーワード：</label>
+                <input type="text" id="keyword" placeholder="例: サンサン、くもりん" style="width: 300px; margin-right: 10px;">
+                <button onclick="performSearch()">検索実行</button>
+            </div>
+            
+            <div style="display: flex; gap: 15px; align-items: center; font-size: 14px;">
+                <div>
+                    <label>件数：</label>
+                    <select id="limitResults" style="padding: 4px;">
+                        <option value="20">20件</option>
+                        <option value="50" selected>50件</option>
+                        <option value="100">100件</option>
+                        <option value="200">200件</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <button onclick="logout()" style="background: #dc3545; color: white; padding: 8px 12px; font-size: 14px; border: none; border-radius: 5px; cursor: pointer;">🚪 ログアウト</button>
+    </div>
+    
+    <div id="loading" style="display: none;">
+        <p>🔄 検索中...</p>
+    </div>
+    
+    <div id="results" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding: 10px; background: #f8f9fa; border-radius: 5px;">
+            <h3 id="resultsHeader" style="margin: 0;"></h3>
+            <div style="display: flex; gap: 15px; align-items: center; font-size: 14px;">
+                <div>
+                    <label>絞り込み：</label>
+                    <select id="contentFilter" style="padding: 4px;" onchange="applyFiltering()">
+                        <option value="">すべて</option>
+                        <option value="title">動画タイトル</option>
+                        <option value="dialogue_voice_filming">セリフ + 音声指示 + 撮影指示</option>
+                    </select>
+                </div>
+                <div>
+                    <label>並び順：</label>
+                    <select id="sortOrderPost" style="padding: 4px;" onchange="applySorting()">
+                        <option value="management_id_asc">管理ID (昇順)</option>
+                        <option value="management_id_desc">管理ID (降順)</option>
+                        <option value="broadcast_date_asc">配信日 (古い順)</option>
+                        <option value="broadcast_date_desc">配信日 (新しい順)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div id="resultsList"></div>
+    </div>
+    
+    <div id="error" style="display: none; color: red;"></div>
+
+    <script>
+        let currentSearchResults = [];
+        let currentKeyword = '';
+        
+        async function performSearch() {
+            var keyword = document.getElementById('keyword').value.trim();
+            var limit = document.getElementById('limitResults').value;
+            
+            if (!keyword) {
+                showError('キーワードを入力してください');
+                return;
+            }
+            
+            hideError();
+            showLoading();
+            
+            try {
+                console.log('検索リクエスト開始:', { keyword, limit });
+                
+                var response = await fetch('/api/search', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        keyword: keyword,
+                        character_filter: '',
+                        sort_order: 'management_id_asc',
+                        limit: parseInt(limit)
+                    })
+                });
+                
+                console.log('レスポンスステータス:', response.status);
+                
+                if (!response.ok) {
+                    throw new Error('HTTP ' + response.status + ': ' + response.statusText);
+                }
+                
+                var data = await response.json();
+                console.log('レスポンスデータ:', data);
+                
+                if (data.success) {
+                    currentSearchResults = data.results;
+                    currentKeyword = keyword;
+                    displayResults(data);
+                } else {
+                    showError('エラー: ' + data.error);
+                }
+                
+            } catch (error) {
+                console.error('検索エラー:', error);
+                showError('ネットワークエラー: ' + error.message);
+            } finally {
+                hideLoading();
+            }
+        }
+        
+        function displayResults(data) {
+            var resultsDiv = document.getElementById('results');
+            var headerDiv = document.getElementById('resultsHeader');
+            var listDiv = document.getElementById('resultsList');
+            
+            headerDiv.innerHTML = '検索結果: "' + data.keyword + '" (' + data.count + '件)';
+            
+            var html = '';
+            for (var i = 0; i < data.results.length; i++) {
+                var result = data.results[i];
+                html += '<div style="border: 1px solid #ccc; margin: 10px; padding: 10px;">';
+                html += '<h4>' + result.title + ' (' + result.management_id + ')</h4>';
+                html += '<p><strong>配信日:</strong> ' + (result.broadcast_date || 'なし') + '</p>';
+                if (result.script_url) {
+                    html += '<p><strong>台本URL:</strong> <a href="' + result.script_url + '" target="_blank" style="color: #007bff;">📋 台本を開く</a></p>';
+                }
+                html += '<p><strong>行番号:</strong> ' + (result.row_number || 'なし') + '</p>';
+                html += '<p><strong>キャラクター:</strong> ' + (result.character_name || 'なし') + '</p>';
+                html += '<p><strong>セリフ:</strong> ' + (result.dialogue || 'なし') + '</p>';
+                if (result.voice_instruction) {
+                    html += '<p><strong>音声指示:</strong> ' + result.voice_instruction + '</p>';
+                }
+                if (result.filming_instruction) {
+                    html += '<p><strong>撮影指示:</strong> ' + result.filming_instruction + '</p>';
+                }
+                if (result.editing_instruction) {
+                    html += '<p><strong>編集指示:</strong> ' + result.editing_instruction + '</p>';
+                }
+                html += '</div>';
+            }
+            
+            listDiv.innerHTML = html;
+            resultsDiv.style.display = 'block';
+        }
+        
+        function showLoading() {
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('results').style.display = 'none';
+        }
+        
+        function hideLoading() {
+            document.getElementById('loading').style.display = 'none';
+        }
+        
+        function showError(message) {
+            var errorDiv = document.getElementById('error');
+            errorDiv.innerHTML = message;
+            errorDiv.style.display = 'block';
+            console.error('Error:', message);
+        }
+        
+        function hideError() {
+            document.getElementById('error').style.display = 'none';
+        }
+        
+        // 認証チェック機能
+        function checkAuth() {
+            const auth = sessionStorage.getItem('sunsun_auth');
+            const authTime = sessionStorage.getItem('sunsun_auth_time');
+            
+            if (auth !== 'true' || !authTime) {
+                window.location.href = '/index.html';
+                return false;
+            }
+            
+            const now = Date.now();
+            const authTimestamp = parseInt(authTime);
+            const hoursPassed = (now - authTimestamp) / (1000 * 60 * 60);
+            
+            // 24時間経過でログアウト
+            if (hoursPassed >= 24) {
+                sessionStorage.removeItem('sunsun_auth');
+                sessionStorage.removeItem('sunsun_auth_time');
+                window.location.href = '/index.html';
+                return false;
+            }
+            
+            return true;
+        }
+        
+        // ログアウト機能
+        function logout() {
+            sessionStorage.removeItem('sunsun_auth');
+            sessionStorage.removeItem('sunsun_auth_time');
+            window.location.href = '/index.html';
+        }
+        
+        // Enterキーで検索
+        document.getElementById('keyword').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+        
+        // 検索後のソート機能
+        function applySorting() {
+            var contentFilter = document.getElementById('contentFilter').value;
+            var sortOrder = document.getElementById('sortOrderPost').value;
+            
+            var filteredResults = applyContentFilter(currentSearchResults, contentFilter);
+            var sortedResults = sortResults(filteredResults, sortOrder);
+            
+            displayResultsList(sortedResults);
+            updateResultsHeader(sortedResults.length, contentFilter);
+        }
+        
+        // 検索後のフィルタリング機能
+        function applyFiltering() {
+            var contentFilter = document.getElementById('contentFilter').value;
+            var sortOrder = document.getElementById('sortOrderPost').value;
+            
+            var filteredResults = applyContentFilter(currentSearchResults, contentFilter);
+            var sortedResults = sortResults(filteredResults, sortOrder);
+            
+            displayResultsList(sortedResults);
+            updateResultsHeader(sortedResults.length, contentFilter);
+        }
+        
+        // コンテンツフィルター適用
+        function applyContentFilter(results, contentFilter) {
+            if (!contentFilter) return results;
+            
+            return results.filter(function(result) {
+                var keyword = currentKeyword.toLowerCase();
+                
+                if (contentFilter === 'title') {
+                    // タイトルにキーワードが含まれる場合のみ
+                    return result.title && result.title.toLowerCase().includes(keyword);
+                } else if (contentFilter === 'dialogue_voice_filming') {
+                    // 新しいデータベース構造では content_type で判定可能
+                    return result.content_type === 'dialogue' || 
+                           result.content_type === 'audio_instruction' ||
+                           result.content_type === 'visual_effect' ||
+                           (result.voice_instruction && result.voice_instruction.toLowerCase().includes(keyword)) ||
+                           (result.filming_instruction && result.filming_instruction.toLowerCase().includes(keyword));
+                }
+                
+                return true;
+            });
+        }
+        
+        // ソート機能
+        function sortResults(results, sortOrder) {
+            var sorted = [...results];
+            
+            switch(sortOrder) {
+                case 'management_id_asc':
+                    sorted.sort((a, b) => (a.management_id || '').localeCompare(b.management_id || ''));
+                    break;
+                case 'management_id_desc':
+                    sorted.sort((a, b) => (b.management_id || '').localeCompare(a.management_id || ''));
+                    break;
+                case 'broadcast_date_asc':
+                    sorted.sort((a, b) => (a.broadcast_date || '').localeCompare(b.broadcast_date || ''));
+                    break;
+                case 'broadcast_date_desc':
+                    sorted.sort((a, b) => (b.broadcast_date || '').localeCompare(a.broadcast_date || ''));
+                    break;
+            }
+            
+            return sorted;
+        }
+        
+        // 結果一覧の表示
+        function displayResultsList(results) {
+            var listDiv = document.getElementById('resultsList');
+            
+            var html = '';
+            for (var i = 0; i < results.length; i++) {
+                var result = results[i];
+                html += '<div style="border: 1px solid #ccc; margin: 10px; padding: 10px;">';
+                html += '<h4>' + result.title + ' (' + result.management_id + ')</h4>';
+                html += '<p><strong>配信日:</strong> ' + (result.broadcast_date || 'なし') + '</p>';
+                if (result.script_url) {
+                    html += '<p><strong>台本URL:</strong> <a href="' + result.script_url + '" target="_blank" style="color: #007bff;">📋 台本を開く</a></p>';
+                }
+                html += '<p><strong>行番号:</strong> ' + (result.row_number || 'なし') + '</p>';
+                html += '<p><strong>キャラクター:</strong> ' + (result.character_name || 'なし') + '</p>';
+                html += '<p><strong>セリフ:</strong> ' + (result.dialogue || 'なし') + '</p>';
+                if (result.voice_instruction) {
+                    html += '<p><strong>音声指示:</strong> ' + result.voice_instruction + '</p>';
+                }
+                if (result.filming_instruction) {
+                    html += '<p><strong>撮影指示:</strong> ' + result.filming_instruction + '</p>';
+                }
+                if (result.editing_instruction) {
+                    html += '<p><strong>編集指示:</strong> ' + result.editing_instruction + '</p>';
+                }
+                html += '</div>';
+            }
+            
+            listDiv.innerHTML = html;
+        }
+        
+        // 結果ヘッダーの更新
+        function updateResultsHeader(count, contentFilter) {
+            var headerDiv = document.getElementById('resultsHeader');
+            var filterInfo = '';
+            if (contentFilter === 'title') {
+                filterInfo = ' | 動画タイトル';
+            } else if (contentFilter === 'dialogue_voice_filming') {
+                filterInfo = ' | セリフ・音声指示・撮影指示';
+            }
+            headerDiv.innerHTML = '検索結果: "' + currentKeyword + '" (' + count + '件)' + filterInfo;
+        }
+        
+        // ページ読み込み時の認証チェック
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!checkAuth()) {
+                return;
+            }
+            log('認証済みユーザー - ページ読み込み完了');
+        });
+    </script>
+</body>
+</html>

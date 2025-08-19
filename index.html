@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>サンサンキッズTV 台本検索システム - 認証 v2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+        .login-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .header p {
+            color: #666;
+            margin: 0;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        .login-btn {
+            width: 100%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        .error {
+            color: #d63031;
+            text-align: center;
+            margin-top: 15px;
+            padding: 10px;
+            background: #ffe6e6;
+            border-radius: 5px;
+            display: none;
+        }
+        .info {
+            background: #e8f4f8;
+            color: #2d3436;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="header">
+            <h1>🎬 サンサンキッズTV</h1>
+            <p>台本検索システム</p>
+        </div>
+        
+        <div class="info">
+            🔐 このシステムは社内スタッフ専用です
+        </div>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="password">パスワード：</label>
+                <input type="password" id="password" placeholder="パスワードを入力してください" required>
+            </div>
+            
+            <button type="submit" class="login-btn">🔓 ログイン</button>
+        </form>
+        
+        <div id="error" class="error"></div>
+    </div>
+
+    <script>
+        // 簡易パスワード設定（実際の運用では環境変数等を使用）
+        const validPasswords = ['sun_test'];
+        
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('password').value;
+            const errorDiv = document.getElementById('error');
+            
+            if (validPasswords.includes(password)) {
+                // 認証成功 - セッション情報を保存
+                sessionStorage.setItem('sunsun_auth', 'true');
+                sessionStorage.setItem('sunsun_auth_time', Date.now().toString());
+                
+                // メインページにリダイレクト
+                window.location.href = '/search.html';
+            } else {
+                // 認証失敗
+                errorDiv.textContent = 'パスワードが正しくありません';
+                errorDiv.style.display = 'block';
+                document.getElementById('password').value = '';
+                document.getElementById('password').focus();
+            }
+        });
+        
+        // ページ読み込み時の処理
+        document.addEventListener('DOMContentLoaded', function() {
+            // 既に認証済みの場合はメインページにリダイレクト
+            const auth = sessionStorage.getItem('sunsun_auth');
+            const authTime = sessionStorage.getItem('sunsun_auth_time');
+            
+            if (auth === 'true' && authTime) {
+                const now = Date.now();
+                const authTimestamp = parseInt(authTime);
+                const hoursPassed = (now - authTimestamp) / (1000 * 60 * 60);
+                
+                // 24時間以内なら自動ログイン
+                if (hoursPassed < 24) {
+                    window.location.href = '/search.html';
+                } else {
+                    // 認証期限切れ
+                    sessionStorage.removeItem('sunsun_auth');
+                    sessionStorage.removeItem('sunsun_auth_time');
+                }
+            }
+            
+            // パスワードフィールドにフォーカス
+            document.getElementById('password').focus();
+        });
+    </script>
+</body>
+</html>
