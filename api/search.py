@@ -37,6 +37,7 @@ class handler(BaseHTTPRequestHandler):
             character_filter = data.get('character_filter', '').strip()
             sort_order = data.get('sort_order', 'management_id_asc')
             limit = data.get('limit', 50)
+            offset = data.get('offset', 0)  # For pagination
             
             if not keyword:
                 response = {
@@ -58,20 +59,33 @@ class handler(BaseHTTPRequestHandler):
                     conn = sqlite3.connect(db_path)
                     cursor = conn.cursor()
                     
-                    # Build dynamic query for reorganized database - only actual character dialogue
-                    base_query = """
-                    SELECT s.management_id, s.title, s.broadcast_date, cd.character_name, cd.dialogue_text, cd.voice_instruction, '', '', s.script_url, cd.row_number
-                    FROM character_dialogue cd
-                    JOIN scripts s ON cd.script_id = s.id
-                    WHERE (cd.dialogue_text LIKE ? OR cd.character_name LIKE ? OR s.title LIKE ?)
-                    """
-                    
-                    query_params = [f'%{keyword}%', f'%{keyword}%', f'%{keyword}%']
+                    # Build base WHERE clause
+                    base_where = "WHERE (cd.dialogue_text LIKE ? OR cd.character_name LIKE ? OR s.title LIKE ?)"
+                    where_params = [f'%{keyword}%', f'%{keyword}%', f'%{keyword}%']
                     
                     # Add character filter
                     if character_filter:
-                        base_query += " AND cd.character_name LIKE ?"
-                        query_params.append(f'%{character_filter}%')
+                        base_where += " AND cd.character_name LIKE ?"
+                        where_params.append(f'%{character_filter}%')
+                    
+                    # First, get total count
+                    count_query = f"""
+                    SELECT COUNT(*) 
+                    FROM character_dialogue cd
+                    JOIN scripts s ON cd.script_id = s.id
+                    {base_where}
+                    """
+                    
+                    cursor.execute(count_query, where_params)
+                    total_count = cursor.fetchone()[0]
+                    
+                    # Then get paginated results
+                    data_query = f"""
+                    SELECT s.management_id, s.title, s.broadcast_date, cd.character_name, cd.dialogue_text, cd.voice_instruction, '', '', s.script_url, cd.row_number
+                    FROM character_dialogue cd
+                    JOIN scripts s ON cd.script_id = s.id
+                    {base_where}
+                    """
                     
                     # Add sorting
                     sort_map = {
@@ -82,10 +96,10 @@ class handler(BaseHTTPRequestHandler):
                     }
                     
                     order_clause = sort_map.get(sort_order, 'ORDER BY s.management_id ASC')
-                    base_query += f" {order_clause} LIMIT ?"
-                    query_params.append(limit)
+                    data_query += f" {order_clause} LIMIT ? OFFSET ?"
                     
-                    cursor.execute(base_query, query_params)
+                    query_params = where_params + [limit, offset]
+                    cursor.execute(data_query, query_params)
                     results = cursor.fetchall()
                     conn.close()
                     
@@ -115,8 +129,11 @@ class handler(BaseHTTPRequestHandler):
                         'character_filter': character_filter,
                         'sort_order': sort_order,
                         'limit': limit,
+                        'offset': offset,
                         'results': formatted_results,
                         'count': len(formatted_results),
+                        'total_count': total_count,
+                        'has_more': total_count > (offset + len(formatted_results)),
                         'database_info': f'検索対象: 整理済みデータベース（実際のキャラクターセリフのみ、状況説明文は除外済み）'
                     }
                     

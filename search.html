@@ -23,6 +23,8 @@
                         <option value="50" selected>50件</option>
                         <option value="100">100件</option>
                         <option value="200">200件</option>
+                        <option value="500">500件</option>
+                        <option value="1000">1000件</option>
                     </select>
                 </div>
             </div>
@@ -124,14 +126,31 @@
             var headerDiv = document.getElementById('resultsHeader');
             var listDiv = document.getElementById('resultsList');
             
-            headerDiv.innerHTML = '検索結果: "' + data.keyword + '" (' + data.count + '件)';
+            // Improved header with total count and pagination info
+            var headerText = '検索結果: "' + data.keyword + '" ';
+            if (data.total_count !== undefined) {
+                headerText += '(全' + data.total_count + '件中 ' + (data.offset + 1) + '-' + (data.offset + data.count) + '件を表示)';
+                if (data.has_more) {
+                    headerText += ' <span style="color: #666; font-size: 12px;">※さらに結果があります</span>';
+                }
+            } else {
+                headerText += '(' + data.count + '件)';
+            }
+            headerDiv.innerHTML = headerText;
             
             var html = '';
             for (var i = 0; i < data.results.length; i++) {
                 var result = data.results[i];
                 html += '<div style="border: 1px solid #ccc; margin: 10px; padding: 10px;">';
                 html += '<h4>' + result.title + ' (' + result.management_id + ')</h4>';
-                html += '<p><strong>配信日:</strong> ' + (result.broadcast_date || 'なし') + '</p>';
+                // Add year/month info for better categorization
+                var dateInfo = result.broadcast_date || 'なし';
+                if (result.broadcast_date && result.broadcast_date.length >= 8) {
+                    var year = '20' + result.broadcast_date.substring(0, 2);
+                    var month = result.broadcast_date.substring(3, 5);
+                    dateInfo += ' (' + year + '年' + month + '月)';
+                }
+                html += '<p><strong>配信日:</strong> ' + dateInfo + '</p>';
                 if (result.script_url) {
                     html += '<p><strong>台本URL:</strong> <a href="' + result.script_url + '" target="_blank" style="color: #007bff;">📋 台本を開く</a></p>';
                 }
