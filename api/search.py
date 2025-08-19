@@ -90,6 +90,39 @@ class handler(BaseHTTPRequestHandler):
                     cursor.execute(count_query, where_params)
                     total_count = cursor.fetchone()[0]
                     
+                    # For debugging: get breakdown by search type
+                    debug_info = {}
+                    if search_type == 'all':
+                        # Count title matches
+                        title_query = f"""
+                        SELECT COUNT(*) 
+                        FROM character_dialogue cd
+                        JOIN scripts s ON cd.script_id = s.id
+                        WHERE s.title LIKE ?
+                        """
+                        cursor.execute(title_query, [f'%{keyword}%'])
+                        debug_info['title_matches'] = cursor.fetchone()[0]
+                        
+                        # Count dialogue matches
+                        dialogue_query = f"""
+                        SELECT COUNT(*) 
+                        FROM character_dialogue cd
+                        JOIN scripts s ON cd.script_id = s.id
+                        WHERE (cd.dialogue_text LIKE ? OR cd.character_name LIKE ?)
+                        """
+                        cursor.execute(dialogue_query, [f'%{keyword}%', f'%{keyword}%'])
+                        debug_info['dialogue_matches'] = cursor.fetchone()[0]
+                        
+                        # Count overlapping matches (both title and dialogue)
+                        overlap_query = f"""
+                        SELECT COUNT(*) 
+                        FROM character_dialogue cd
+                        JOIN scripts s ON cd.script_id = s.id
+                        WHERE s.title LIKE ? AND (cd.dialogue_text LIKE ? OR cd.character_name LIKE ?)
+                        """
+                        cursor.execute(overlap_query, [f'%{keyword}%', f'%{keyword}%', f'%{keyword}%'])
+                        debug_info['overlap_matches'] = cursor.fetchone()[0]
+                    
                     # Then get paginated results
                     data_query = f"""
                     SELECT s.management_id, s.title, s.broadcast_date, cd.character_name, cd.dialogue_text, cd.voice_instruction, '', '', s.script_url, cd.row_number
@@ -146,6 +179,7 @@ class handler(BaseHTTPRequestHandler):
                         'count': len(formatted_results),
                         'total_count': total_count,
                         'has_more': total_count > (offset + len(formatted_results)),
+                        'debug_info': debug_info if debug_info else None,
                         'database_info': f'検索対象: 整理済みデータベース（実際のキャラクターセリフのみ、状況説明文は除外済み）'
                     }
                     

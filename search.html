@@ -148,6 +148,11 @@
                 if (data.has_more) {
                     headerText += ' <span style="color: #666; font-size: 12px;">※さらに結果があります</span>';
                 }
+                
+                // Add debug info if available
+                if (data.debug_info) {
+                    headerText += '<br><small style="color: #888;">デバッグ: タイトル' + data.debug_info.title_matches + '件 + セリフ' + data.debug_info.dialogue_matches + '件 - 重複' + data.debug_info.overlap_matches + '件 = ' + (data.debug_info.title_matches + data.debug_info.dialogue_matches - data.debug_info.overlap_matches) + '件</small>';
+                }
             } else {
                 headerText += '(' + data.count + '件)';
             }
