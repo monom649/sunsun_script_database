@@ -66,11 +66,11 @@ class handler(BaseHTTPRequestHandler):
                         base_where = "WHERE s.title LIKE ?"
                         where_params = [f'%{keyword}%']
                     elif search_type == 'dialogue_only':
-                        # Search for dialogue AND scripts where title contains keyword (simpler approach)
+                        # Search ONLY in dialogue text and character names, NOT in titles
                         base_where = """WHERE LENGTH(cdu.character_name) > 0 AND LENGTH(cdu.dialogue_text) > 0 AND (
-                            cdu.dialogue_text LIKE ? OR cdu.character_name LIKE ? OR s.title LIKE ?
+                            cdu.dialogue_text LIKE ? OR cdu.character_name LIKE ?
                         )"""
-                        where_params = [f'%{keyword}%', f'%{keyword}%', f'%{keyword}%']
+                        where_params = [f'%{keyword}%', f'%{keyword}%']
                     else:
                         # Search all fields (default)
                         base_where = "WHERE (cdu.dialogue_text LIKE ? OR cdu.character_name LIKE ? OR s.title LIKE ? OR cdu.filming_audio_instructions LIKE ?)"
@@ -105,16 +105,16 @@ class handler(BaseHTTPRequestHandler):
                         cursor.execute(title_query, [f'%{keyword}%'])
                         debug_info['title_matches'] = cursor.fetchone()[0]
                         
-                        # Count dialogue matches (includes related scripts)  
+                        # Count dialogue matches (dialogue text and character names only)  
                         dialogue_query = f"""
                         SELECT COUNT(*) 
                         FROM character_dialogue_unified cdu
                         JOIN scripts s ON cdu.script_id = s.id
                         WHERE LENGTH(cdu.character_name) > 0 AND LENGTH(cdu.dialogue_text) > 0 AND (
-                            cdu.dialogue_text LIKE ? OR cdu.character_name LIKE ? OR s.title LIKE ?
+                            cdu.dialogue_text LIKE ? OR cdu.character_name LIKE ?
                         )
                         """
-                        cursor.execute(dialogue_query, [f'%{keyword}%', f'%{keyword}%', f'%{keyword}%'])
+                        cursor.execute(dialogue_query, [f'%{keyword}%', f'%{keyword}%'])
                         debug_info['dialogue_matches'] = cursor.fetchone()[0]
                         
                         # Count instruction matches (filming_audio_instructions)
