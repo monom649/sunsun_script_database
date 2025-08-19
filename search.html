@@ -248,10 +248,9 @@
                     // タイトルにキーワードが含まれる場合のみ
                     return result.title && result.title.toLowerCase().includes(keyword);
                 } else if (contentFilter === 'dialogue_voice_filming') {
-                    // 新しいデータベース構造では content_type で判定可能
-                    return result.content_type === 'dialogue' || 
-                           result.content_type === 'audio_instruction' ||
-                           result.content_type === 'visual_effect' ||
+                    // 新しいデータベースでは全て実際のキャラクターセリフなので、
+                    // セリフまたは音声・撮影指示にキーワードが含まれるものを表示
+                    return (result.dialogue && result.dialogue.toLowerCase().includes(keyword)) ||
                            (result.voice_instruction && result.voice_instruction.toLowerCase().includes(keyword)) ||
                            (result.filming_instruction && result.filming_instruction.toLowerCase().includes(keyword));
                 }
