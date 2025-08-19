@@ -46,8 +46,8 @@ class handler(BaseHTTPRequestHandler):
             else:
                 # Search in real database from Dropbox
                 try:
-                    # Dropbox direct download URL
-                    dropbox_url = 'https://www.dropbox.com/scl/fi/jrns72qaqx1xu79yq3ndj/youtube_search_complete_all.db?rlkey=9jg1jmc4obzbtyc3ofn8yf2od&st=ijyc2fsc&dl=1'
+                    # Dropbox direct download URL - reorganized database
+                    dropbox_url = 'https://www.dropbox.com/scl/fi/ofuqpug3tstgpdqu0dvcr/youtube_search_complete_all.db?rlkey=y4al959fd7tdozin51mc9yblz&st=juxz0zgt&dl=1'
                     
                     # Download database to temporary file
                     with tempfile.NamedTemporaryFile(delete=False, suffix='.db') as temp_db:
@@ -58,29 +58,30 @@ class handler(BaseHTTPRequestHandler):
                     conn = sqlite3.connect(db_path)
                     cursor = conn.cursor()
                     
-                    # Build dynamic query
+                    # Build dynamic query for reorganized database - only actual character dialogue
                     base_query = """
-                    SELECT management_id, title, broadcast_date, character_name, dialogue, voice_instruction, filming_instruction, editing_instruction, script_url, row_number
-                    FROM script_lines 
-                    WHERE (dialogue LIKE ? OR character_name LIKE ? OR title LIKE ?)
+                    SELECT s.management_id, s.title, s.broadcast_date, cd.character_name, cd.dialogue_text, cd.voice_instruction, '', '', s.script_url, cd.row_number
+                    FROM character_dialogue cd
+                    JOIN scripts s ON cd.script_id = s.id
+                    WHERE (cd.dialogue_text LIKE ? OR cd.character_name LIKE ? OR s.title LIKE ?)
                     """
                     
                     query_params = [f'%{keyword}%', f'%{keyword}%', f'%{keyword}%']
                     
                     # Add character filter
                     if character_filter:
-                        base_query += " AND character_name LIKE ?"
+                        base_query += " AND cd.character_name LIKE ?"
                         query_params.append(f'%{character_filter}%')
                     
                     # Add sorting
                     sort_map = {
-                        'management_id_asc': 'ORDER BY management_id ASC',
-                        'management_id_desc': 'ORDER BY management_id DESC',
-                        'broadcast_date_asc': 'ORDER BY broadcast_date ASC',
-                        'broadcast_date_desc': 'ORDER BY broadcast_date DESC'
+                        'management_id_asc': 'ORDER BY s.management_id ASC',
+                        'management_id_desc': 'ORDER BY s.management_id DESC',
+                        'broadcast_date_asc': 'ORDER BY s.broadcast_date ASC',
+                        'broadcast_date_desc': 'ORDER BY s.broadcast_date DESC'
                     }
                     
-                    order_clause = sort_map.get(sort_order, 'ORDER BY management_id ASC')
+                    order_clause = sort_map.get(sort_order, 'ORDER BY s.management_id ASC')
                     base_query += f" {order_clause} LIMIT ?"
                     query_params.append(limit)
                     
@@ -115,7 +116,7 @@ class handler(BaseHTTPRequestHandler):
                         'limit': limit,
                         'results': formatted_results,
                         'count': len(formatted_results),
-                        'database_info': f'検索対象: 完全なデータベース（258,137行の実際の台本データ）'
+                        'database_info': f'検索対象: 整理済みデータベース（実際のキャラクターセリフのみ、状況説明文は除外済み）'
                     }
                     
                 except Exception as db_error:
