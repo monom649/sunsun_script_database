@@ -105,7 +105,8 @@ class handler(BaseHTTPRequestHandler):
                             'filming_instruction': row[6] or '',
                             'editing_instruction': row[7] or '',
                             'script_url': row[8] or '',
-                            'row_number': row[9] or 0
+                            'row_number': row[9] or 0,
+                            'content_type': 'dialogue'  # All results from character_dialogue table
                         })
                     
                     response = {

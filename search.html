@@ -249,9 +249,12 @@
                     return result.title && result.title.toLowerCase().includes(keyword);
                 } else if (contentFilter === 'dialogue_voice_filming') {
                     // 新しいデータベースでは全て実際のキャラクターセリフなので、
-                    // セリフまたは音声・撮影指示にキーワードが含まれるものを表示
-                    return (result.dialogue && result.dialogue.toLowerCase().includes(keyword)) ||
-                           (result.voice_instruction && result.voice_instruction.toLowerCase().includes(keyword)) ||
+                    // content_type が dialogue の場合は全て表示
+                    // または音声・撮影指示にキーワードが含まれる場合も表示
+                    if (result.content_type === 'dialogue') {
+                        return true;  // All dialogue results should be shown
+                    }
+                    return (result.voice_instruction && result.voice_instruction.toLowerCase().includes(keyword)) ||
                            (result.filming_instruction && result.filming_instruction.toLowerCase().includes(keyword));
                 }
                 
