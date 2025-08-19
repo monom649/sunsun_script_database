@@ -38,6 +38,7 @@ class handler(BaseHTTPRequestHandler):
             sort_order = data.get('sort_order', 'management_id_asc')
             limit = data.get('limit', 50)
             offset = data.get('offset', 0)  # For pagination
+            search_type = data.get('search_type', 'all')  # 'all', 'title_only', 'dialogue_only'
             
             if not keyword:
                 response = {
@@ -59,9 +60,19 @@ class handler(BaseHTTPRequestHandler):
                     conn = sqlite3.connect(db_path)
                     cursor = conn.cursor()
                     
-                    # Build base WHERE clause
-                    base_where = "WHERE (cd.dialogue_text LIKE ? OR cd.character_name LIKE ? OR s.title LIKE ?)"
-                    where_params = [f'%{keyword}%', f'%{keyword}%', f'%{keyword}%']
+                    # Build WHERE clause based on search type
+                    if search_type == 'title_only':
+                        # Only search in titles
+                        base_where = "WHERE s.title LIKE ?"
+                        where_params = [f'%{keyword}%']
+                    elif search_type == 'dialogue_only':
+                        # Only search in dialogue and character names
+                        base_where = "WHERE (cd.dialogue_text LIKE ? OR cd.character_name LIKE ?)"
+                        where_params = [f'%{keyword}%', f'%{keyword}%']
+                    else:
+                        # Search all fields (default)
+                        base_where = "WHERE (cd.dialogue_text LIKE ? OR cd.character_name LIKE ? OR s.title LIKE ?)"
+                        where_params = [f'%{keyword}%', f'%{keyword}%', f'%{keyword}%']
                     
                     # Add character filter
                     if character_filter:
@@ -130,6 +141,7 @@ class handler(BaseHTTPRequestHandler):
                         'sort_order': sort_order,
                         'limit': limit,
                         'offset': offset,
+                        'search_type': search_type,
                         'results': formatted_results,
                         'count': len(formatted_results),
                         'total_count': total_count,

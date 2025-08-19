@@ -264,20 +264,16 @@
             var contentFilter = document.getElementById('contentFilter').value;
             var sortOrder = document.getElementById('sortOrderPost').value;
             
-            if (contentFilter === '' || contentFilter === 'dialogue_voice_filming') {
-                // No filter or dialogue filter - show current results as-is
-                // (New database already filters to dialogue only)
-                var sortedResults = sortResults(currentSearchResults, sortOrder);
-                displayResultsList(sortedResults);
-                updateResultsHeader(sortedResults.length, contentFilter);
-            } else if (contentFilter === 'title') {
-                // Title filter - need to search again with different parameters
-                // For now, filter current results
-                var filteredResults = applyContentFilter(currentSearchResults, contentFilter);
-                var sortedResults = sortResults(filteredResults, sortOrder);
-                displayResultsList(sortedResults);
-                updateResultsHeader(sortedResults.length, contentFilter);
+            // Determine search type based on filter
+            var searchType = 'all';
+            if (contentFilter === 'title') {
+                searchType = 'title_only';
+            } else if (contentFilter === 'dialogue_voice_filming') {
+                searchType = 'dialogue_only';
             }
+            
+            // Perform new search with the selected filter
+            performSearchWithFilter(searchType, sortOrder);
         }
         
         // コンテンツフィルター適用
@@ -404,6 +400,70 @@
         function loadPreviousPage() {
             var prevOffset = Math.max(0, (currentPage - 1) * currentLimit);
             performSearch(prevOffset);
+        }
+        
+        // フィルター付き検索
+        async function performSearchWithFilter(searchType, sortOrder, offset = 0) {
+            var keyword = currentKeyword;
+            var limit = currentLimit;
+            
+            if (!keyword) {
+                showError('キーワードを入力してください');
+                return;
+            }
+            
+            hideError();
+            showLoading();
+            
+            try {
+                console.log('フィルター検索リクエスト開始:', { keyword, searchType, sortOrder, limit, offset });
+                
+                var response = await fetch('/api/search', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        keyword: keyword,
+                        character_filter: '',
+                        sort_order: sortOrder || 'management_id_asc',
+                        limit: limit,
+                        offset: offset,
+                        search_type: searchType
+                    })
+                });
+                
+                console.log('レスポンスステータス:', response.status);
+                
+                if (!response.ok) {
+                    throw new Error('HTTP ' + response.status + ': ' + response.statusText);
+                }
+                
+                var data = await response.json();
+                console.log('レスポンスデータ:', data);
+                
+                if (data.success) {
+                    currentSearchResults = data.results;
+                    currentSearchData = data;
+                    currentPage = Math.floor(offset / currentLimit);
+                    displayResults(data);
+                    updatePagination(data);
+                    
+                    // Update filter display
+                    var contentFilter = '';
+                    if (searchType === 'title_only') contentFilter = 'title';
+                    else if (searchType === 'dialogue_only') contentFilter = 'dialogue_voice_filming';
+                    updateResultsHeader(data.count, contentFilter);
+                } else {
+                    showError('エラー: ' + data.error);
+                }
+                
+            } catch (error) {
+                console.error('検索エラー:', error);
+                showError('ネットワークエラー: ' + error.message);
+            } finally {
+                hideLoading();
+            }
         }
         
         // ページ読み込み時の認証チェック
