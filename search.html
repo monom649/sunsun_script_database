@@ -43,9 +43,9 @@
                 <div>
                     <label>絞り込み：</label>
                     <select id="contentFilter" style="padding: 4px;" onchange="applyFiltering()">
-                        <option value="">すべて</option>
-                        <option value="title">動画タイトル</option>
-                        <option value="dialogue_voice_filming">セリフ + 音声指示 + 撮影指示</option>
+                        <option value="">すべて（タイトル＋セリフ）</option>
+                        <option value="title">動画タイトルのみ</option>
+                        <option value="dialogue_voice_filming">セリフ内容のみ</option>
                     </select>
                 </div>
                 <div>
@@ -359,9 +359,11 @@
             var headerDiv = document.getElementById('resultsHeader');
             var filterInfo = '';
             if (contentFilter === 'title') {
-                filterInfo = ' | 動画タイトル';
+                filterInfo = ' | 動画タイトルのみ';
             } else if (contentFilter === 'dialogue_voice_filming') {
-                filterInfo = ' | セリフ・音声指示・撮影指示';
+                filterInfo = ' | セリフ内容のみ';
+            } else {
+                filterInfo = ' | すべて（タイトル＋セリフ）';
             }
             headerDiv.innerHTML = '検索結果: "' + currentKeyword + '" (' + count + '件)' + filterInfo;
         }
