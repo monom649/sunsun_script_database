@@ -1,0 +1,80 @@
+[17:26:28] ================================================================================
+[17:26:28] STARTING COMPREHENSIVE SCRIPT AUDIT
+[17:26:28] ================================================================================
+[17:26:28] Fetching ALL scripts from 作業進捗_new...
+[17:26:31] Extracted 1462 scripts from spreadsheet
+[17:26:31] Checking database status for all scripts...
+[17:26:31] 
+================================================================================
+[17:26:31] AUDIT RESULTS SUMMARY
+[17:26:31] ================================================================================
+[17:26:31] 📊 OVERALL STATISTICS:
+[17:26:31]    Total scripts in spreadsheet: 1462
+[17:26:31]    Complete (DB + dialogue): 125 (8.5%)
+[17:26:31]    Missing dialogue: 1307 (89.4%)
+[17:26:31]    Missing from database: 0 (0.0%)
+[17:26:31]    No URL available: 30 (2.1%)
+[17:26:48] ================================================================================
+[17:26:48] STARTING COMPREHENSIVE SCRIPT AUDIT
+[17:26:48] ================================================================================
+[17:26:48] Fetching ALL scripts from 作業進捗_new...
+[17:26:49] Extracted 1462 scripts from spreadsheet
+[17:26:49] Checking database status for all scripts...
+[17:26:49] 
+================================================================================
+[17:26:49] AUDIT RESULTS SUMMARY
+[17:26:49] ================================================================================
+[17:26:49] 📊 OVERALL STATISTICS:
+[17:26:49]    Total scripts in spreadsheet: 1462
+[17:26:49]    Complete (DB + dialogue): 125 (8.5%)
+[17:26:49]    Missing dialogue: 1307 (89.4%)
+[17:26:49]    Missing from database: 0 (0.0%)
+[17:26:49]    No URL available: 30 (2.1%)
+[17:26:49] 
+⚠️ SCRIPTS WITH MISSING DIALOGUE (1307 scripts):
+[17:26:49] Testing URL accessibility for 20 scripts...
+[17:26:51]    ✅ B2260: Accessible
+[17:26:53]    ✅ B2258: Accessible
+[17:26:55]    ✅ B2262: Accessible
+[17:26:57]    ✅ B2263: Accessible
+[17:26:59]    ✅ B2264: Accessible
+[17:27:01]    ✅ B2265: Accessible
+[17:27:02]    ✅ B2271: Accessible
+[17:27:04]    ✅ B2266: Accessible
+[17:27:05]    ✅ B2272: Accessible
+[17:27:08]    ✅ B2273: Accessible
+[17:27:10]    ❌ B2276: HTTP 400
+[17:27:11]    ✅ B2274: Accessible
+[17:27:13]    ✅ B2285: Accessible
+[17:27:20]    ✅ B2281: Accessible
+[17:27:22]    ✅ B2282: Accessible
+[17:27:23]    ✅ B2268: Accessible
+[17:27:25]    ✅ B2269: Accessible
+[17:27:27]    ✅ B2270: Accessible
+[17:27:28]    ✅ B2283: Accessible
+[17:27:30]    ✅ B2289: Accessible
+[17:27:30] 
+URL ACCESSIBILITY TEST RESULTS (sample of 20):
+[17:27:30]    Accessible URLs: 19
+[17:27:30]    Inaccessible URLs: 1
+[17:27:30] 
+🎯 RECOVERABLE SCRIPTS (accessible URLs):
+[17:27:30]    B2260: ハッピーセットトミカ... (25/05/03)
+[17:27:30]    B2258: 天才キッズvs最強のオカンロボ... (25/05/08)
+[17:27:30]    B2262: サンサンと恐竜が入れ替わっちゃった！？... (25/05/10)
+[17:27:30]    B2263: 天才キッズvs８番出口... (25/05/14)
+[17:27:30]    B2264: 都市伝説セルポ星人... (25/05/17)
+[17:27:30]    ... and 14 more accessible scripts
+[17:27:30] 
+📅 ANALYSIS BY YEAR:
+[17:27:30]    2020: 19/333 complete (5.7%) - 313 missing dialogue
+[17:27:30]    2021: 12/231 complete (5.2%) - 219 missing dialogue
+[17:27:30]    2022: 34/303 complete (11.2%) - 264 missing dialogue
+[17:27:30]    2023: 14/279 complete (5.0%) - 247 missing dialogue
+[17:27:30]    2024: 1/206 complete (0.5%) - 200 missing dialogue
+[17:27:30]    2025: 45/110 complete (40.9%) - 64 missing dialogue
+[17:27:30] 
+================================================================================
+[17:27:30] ❌ AUDIT RESULT: CRITICAL - 8.5% completion rate
+[17:27:30] 🎯 ACTION REQUIRED: 19 scripts with accessible URLs need dialogue extraction
+[17:27:30] ================================================================================

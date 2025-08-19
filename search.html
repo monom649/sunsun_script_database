@@ -45,7 +45,7 @@
                     <select id="contentFilter" style="padding: 4px;" onchange="applyFiltering()">
                         <option value="">すべて（タイトル＋セリフ）</option>
                         <option value="title">動画タイトルのみ</option>
-                        <option value="dialogue_voice_filming">セリフ内容のみ</option>
+                        <option value="dialogue_only">キャラクターセリフのみ</option>
                     </select>
                 </div>
                 <div>
@@ -149,9 +149,9 @@
                     headerText += ' <span style="color: #666; font-size: 12px;">※さらに結果があります</span>';
                 }
                 
-                // Add debug info if available
+                // Add debug info if available for unified structure
                 if (data.debug_info) {
-                    headerText += '<br><small style="color: #888;">デバッグ: タイトル' + data.debug_info.title_matches + '件 + セリフ' + data.debug_info.dialogue_matches + '件 - 重複' + data.debug_info.overlap_matches + '件 = ' + (data.debug_info.title_matches + data.debug_info.dialogue_matches - data.debug_info.overlap_matches) + '件</small>';
+                    headerText += '<br><small style="color: #888;">内訳: タイトル' + (data.debug_info.title_matches || 0) + '件 + キャラクターセリフ' + (data.debug_info.dialogue_matches || 0) + '件 + 撮影・音声指示' + (data.debug_info.instruction_matches || 0) + '件</small>';
                 }
             } else {
                 headerText += '(' + data.count + '件)';
@@ -161,8 +161,17 @@
             var html = '';
             for (var i = 0; i < data.results.length; i++) {
                 var result = data.results[i];
-                html += '<div style="border: 1px solid #ccc; margin: 10px; padding: 10px;">';
-                html += '<h4>' + result.title + ' (' + result.management_id + ')</h4>';
+                
+                // Determine border color based on content type
+                var borderColor = result.content_type === 'dialogue' ? '#28a745' : '#6c757d';
+                var bgColor = result.content_type === 'dialogue' ? '#f8fff8' : '#f8f9fa';
+                
+                html += '<div style="border: 2px solid ' + borderColor + '; margin: 10px; padding: 10px; background: ' + bgColor + ';">';
+                html += '<div style="display: flex; justify-content: space-between; align-items: center;">';
+                html += '<h4 style="margin: 0;">' + result.title + ' (' + result.management_id + ')</h4>';
+                html += '<span style="background: ' + borderColor + '; color: white; padding: 3px 8px; border-radius: 12px; font-size: 11px; font-weight: bold;">' + (result.content_type === 'dialogue' ? 'キャラクター' : '撮影・音声指示') + '</span>';
+                html += '</div>';
+                
                 // Add year/month info for better categorization
                 var dateInfo = result.broadcast_date || 'なし';
                 if (result.broadcast_date && result.broadcast_date.length >= 8) {
@@ -170,22 +179,25 @@
                     var month = result.broadcast_date.substring(3, 5);
                     dateInfo += ' (' + year + '年' + month + '月)';
                 }
-                html += '<p><strong>配信日:</strong> ' + dateInfo + '</p>';
+                html += '<p><strong>📅 配信日:</strong> ' + dateInfo + '</p>';
                 if (result.script_url) {
-                    html += '<p><strong>台本URL:</strong> <a href="' + result.script_url + '" target="_blank" style="color: #007bff;">📋 台本を開く</a></p>';
+                    html += '<p><strong>🔗 台本URL:</strong> <a href="' + result.script_url + '" target="_blank" style="color: #007bff;">📋 台本を開く</a></p>';
                 }
-                html += '<p><strong>行番号:</strong> ' + (result.row_number || 'なし') + '</p>';
-                html += '<p><strong>キャラクター:</strong> ' + (result.character_name || 'なし') + '</p>';
-                html += '<p><strong>セリフ:</strong> ' + (result.dialogue || 'なし') + '</p>';
-                if (result.voice_instruction) {
-                    html += '<p><strong>音声指示:</strong> ' + result.voice_instruction + '</p>';
+                html += '<p><strong>#️⃣ 行番号:</strong> ' + (result.row_number || 'なし') + '</p>';
+                
+                if (result.content_type === 'dialogue') {
+                    // Character dialogue display
+                    html += '<div style="background: white; padding: 10px; border-radius: 5px; margin: 10px 0;">';
+                    html += '<p><strong>🎭 キャラクター:</strong> <span style="background: #007bff; color: white; padding: 2px 6px; border-radius: 3px;">' + (result.character_name || 'なし') + '</span></p>';
+                    html += '<p><strong>💬 セリフ:</strong> <span style="font-weight: normal; line-height: 1.4;">' + (result.dialogue || 'なし') + '</span></p>';
+                    html += '</div>';
+                } else {
+                    // Instruction display
+                    html += '<div style="background: white; padding: 10px; border-radius: 5px; margin: 10px 0;">';
+                    html += '<p><strong>🎬 撮影・音声指示:</strong> <span style="font-weight: normal; line-height: 1.4;">' + (result.filming_instruction || 'なし') + '</span></p>';
+                    html += '</div>';
                 }
-                if (result.filming_instruction) {
-                    html += '<p><strong>撮影指示:</strong> ' + result.filming_instruction + '</p>';
-                }
-                if (result.editing_instruction) {
-                    html += '<p><strong>編集指示:</strong> ' + result.editing_instruction + '</p>';
-                }
+                
                 html += '</div>';
             }
             
@@ -273,7 +285,7 @@
             var searchType = 'all';
             if (contentFilter === 'title') {
                 searchType = 'title_only';
-            } else if (contentFilter === 'dialogue_voice_filming') {
+            } else if (contentFilter === 'dialogue_only') {
                 searchType = 'dialogue_only';
             }
             
@@ -291,12 +303,11 @@
                 if (contentFilter === 'title') {
                     // タイトルにキーワードが含まれる場合のみ
                     return result.title && result.title.toLowerCase().includes(keyword);
-                } else if (contentFilter === 'dialogue_voice_filming') {
-                    // 新しいデータベースでは全て実際のキャラクターセリフなので、
-                    // content_type が dialogue の場合は全て表示
-                    // または音声・撮影指示にキーワードが含まれる場合も表示
-                    if (result.content_type === 'dialogue') {
-                        return true;  // All dialogue results should be shown
+                } else if (contentFilter === 'dialogue_only') {
+                    // 統一構造でキャラクターセリフのみを表示
+                    if (result.content_type === 'dialogue' && result.character_name && result.dialogue) {
+                        return (result.dialogue && result.dialogue.toLowerCase().includes(keyword)) ||
+                               (result.character_name && result.character_name.toLowerCase().includes(keyword));
                     }
                     return (result.voice_instruction && result.voice_instruction.toLowerCase().includes(keyword)) ||
                            (result.filming_instruction && result.filming_instruction.toLowerCase().includes(keyword));

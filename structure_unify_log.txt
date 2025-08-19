@@ -1,0 +1,332 @@
+[18:13:46] ================================================================================
+[18:13:46] SCRIPT STRUCTURE UNIFICATION
+[18:13:46] ================================================================================
+[18:13:46] === ANALYZING CURRENT STRUCTURE ===
+[18:13:46] Total entries: 282,044
+[18:13:46] Proper character entries: 32,760
+[18:13:46] Entries needing restructure: 249,284
+[18:13:46] 
+Sample problematic entries:
+[18:13:46]   CHAR: '' | DIALOGUE: '↓撮影カット数
+(撮影指示かけないところは「空欄」と書いて下さい。)...' | VOICE: '[=countifs(D12:D,"キャラ名",C12:C,...'
+[18:13:46]   CHAR: '' | DIALOGUE: 'トミカ、プラレールを広げてみんながその中にる様子
+※サンサンキャラはぬいぐるみ...' | VOICE: 'None...'
+[18:13:46]   CHAR: '' | DIALOGUE: 'サンサン...' | VOICE: '今日も街をパトロール！...'
+[18:13:46]   CHAR: '' | DIALOGUE: '今日も街をパトロール！...' | VOICE: 'None...'
+[18:13:46]   CHAR: '' | DIALOGUE: 'くもりん...' | VOICE: 'ぶんぶんー！...'
+[18:13:46]   CHAR: '' | DIALOGUE: 'みんなが遊んでいるところに節子ちゃんを置く...' | VOICE: 'None...'
+[18:13:46]   CHAR: '' | DIALOGUE: 'みんなが遊んでいるところに節子ちゃんを置く
+せつこちゃんは前回のレゴで使ったものをそのまま使用...' | VOICE: 'みんなが遊んでいるところに節子ちゃんを置く...'
+[18:13:46]   CHAR: '' | DIALOGUE: '俺さまともあそびーましょー！...' | VOICE: 'None...'
+[18:13:46]   CHAR: '' | DIALOGUE: 'くもりん...' | VOICE: 'ノイズ！？...'
+[18:13:46]   CHAR: '' | DIALOGUE: 'くもりんアップ　後ろにサンサンも見切れている...' | VOICE: 'ノイズ！？...'
+[18:13:46] === STARTING STRUCTURE UNIFICATION ===
+[18:13:47] Processing 282,044 entries...
+[18:13:47]    Processed: 1,000 entries, Unified: 115
+[18:13:47]    Processed: 2,000 entries, Unified: 210
+[18:13:47]    Processed: 3,000 entries, Unified: 275
+[18:13:47]    Processed: 4,000 entries, Unified: 325
+[18:13:47]    Processed: 5,000 entries, Unified: 405
+[18:13:47]    Processed: 6,000 entries, Unified: 487
+[18:13:47]    Processed: 7,000 entries, Unified: 554
+[18:13:47]    Processed: 8,000 entries, Unified: 603
+[18:13:47]    Processed: 9,000 entries, Unified: 679
+[18:13:47]    Processed: 10,000 entries, Unified: 814
+[18:13:47]    Processed: 11,000 entries, Unified: 964
+[18:13:47]    Processed: 12,000 entries, Unified: 1,059
+[18:13:47]    Processed: 13,000 entries, Unified: 1,117
+[18:13:47]    Processed: 14,000 entries, Unified: 1,227
+[18:13:47]    Processed: 15,000 entries, Unified: 1,513
+[18:13:47]    Processed: 16,000 entries, Unified: 2,072
+[18:13:47]    Processed: 17,000 entries, Unified: 2,653
+[18:13:47]    Processed: 18,000 entries, Unified: 3,182
+[18:13:47]    Processed: 19,000 entries, Unified: 3,723
+[18:13:47]    Processed: 20,000 entries, Unified: 4,345
+[18:13:47]    Processed: 21,000 entries, Unified: 5,024
+[18:13:47]    Processed: 22,000 entries, Unified: 5,712
+[18:13:47]    Processed: 23,000 entries, Unified: 6,215
+[18:13:47]    Processed: 24,000 entries, Unified: 6,695
+[18:13:47]    Processed: 25,000 entries, Unified: 6,968
+[18:13:47]    Processed: 26,000 entries, Unified: 7,255
+[18:13:47]    Processed: 27,000 entries, Unified: 7,546
+[18:13:47]    Processed: 28,000 entries, Unified: 7,733
+[18:13:47]    Processed: 29,000 entries, Unified: 7,937
+[18:13:47]    Processed: 30,000 entries, Unified: 8,140
+[18:13:47]    Processed: 31,000 entries, Unified: 8,345
+[18:13:47]    Processed: 32,000 entries, Unified: 8,542
+[18:13:47]    Processed: 33,000 entries, Unified: 8,743
+[18:13:47]    Processed: 34,000 entries, Unified: 8,928
+[18:13:47]    Processed: 35,000 entries, Unified: 9,156
+[18:13:47]    Processed: 36,000 entries, Unified: 9,332
+[18:13:47]    Processed: 37,000 entries, Unified: 9,483
+[18:13:47]    Processed: 38,000 entries, Unified: 9,725
+[18:13:47]    Processed: 39,000 entries, Unified: 9,879
+[18:13:47]    Processed: 40,000 entries, Unified: 10,114
+[18:13:47]    Processed: 41,000 entries, Unified: 10,305
+[18:13:47]    Processed: 42,000 entries, Unified: 10,444
+[18:13:47]    Processed: 43,000 entries, Unified: 10,562
+[18:13:47]    Processed: 44,000 entries, Unified: 10,694
+[18:13:47]    Processed: 45,000 entries, Unified: 10,829
+[18:13:47]    Processed: 46,000 entries, Unified: 10,900
+[18:13:47]    Processed: 47,000 entries, Unified: 11,052
+[18:13:47]    Processed: 48,000 entries, Unified: 11,114
+[18:13:47]    Processed: 49,000 entries, Unified: 11,185
+[18:13:47]    Processed: 50,000 entries, Unified: 11,224
+[18:13:47]    Processed: 51,000 entries, Unified: 11,295
+[18:13:47]    Processed: 52,000 entries, Unified: 11,402
+[18:13:47]    Processed: 53,000 entries, Unified: 11,449
+[18:13:47]    Processed: 54,000 entries, Unified: 11,538
+[18:13:47]    Processed: 55,000 entries, Unified: 11,602
+[18:13:47]    Processed: 56,000 entries, Unified: 11,660
+[18:13:47]    Processed: 57,000 entries, Unified: 11,720
+[18:13:47]    Processed: 58,000 entries, Unified: 11,763
+[18:13:47]    Processed: 59,000 entries, Unified: 11,790
+[18:13:47]    Processed: 60,000 entries, Unified: 11,862
+[18:13:47]    Processed: 61,000 entries, Unified: 11,921
+[18:13:47]    Processed: 62,000 entries, Unified: 11,960
+[18:13:47]    Processed: 63,000 entries, Unified: 11,995
+[18:13:47]    Processed: 64,000 entries, Unified: 12,044
+[18:13:47]    Processed: 65,000 entries, Unified: 12,114
+[18:13:47]    Processed: 66,000 entries, Unified: 12,166
+[18:13:47]    Processed: 67,000 entries, Unified: 12,222
+[18:13:47]    Processed: 68,000 entries, Unified: 12,245
+[18:13:47]    Processed: 69,000 entries, Unified: 12,304
+[18:13:47]    Processed: 70,000 entries, Unified: 12,363
+[18:13:47]    Processed: 71,000 entries, Unified: 12,390
+[18:13:47]    Processed: 72,000 entries, Unified: 12,442
+[18:13:47]    Processed: 73,000 entries, Unified: 12,484
+[18:13:47]    Processed: 74,000 entries, Unified: 12,552
+[18:13:47]    Processed: 75,000 entries, Unified: 12,593
+[18:13:47]    Processed: 76,000 entries, Unified: 12,618
+[18:13:47]    Processed: 77,000 entries, Unified: 12,670
+[18:13:47]    Processed: 78,000 entries, Unified: 12,738
+[18:13:47]    Processed: 79,000 entries, Unified: 12,777
+[18:13:47]    Processed: 80,000 entries, Unified: 12,833
+[18:13:47]    Processed: 81,000 entries, Unified: 12,912
+[18:13:47]    Processed: 82,000 entries, Unified: 12,956
+[18:13:47]    Processed: 83,000 entries, Unified: 12,993
+[18:13:47]    Processed: 84,000 entries, Unified: 13,042
+[18:13:47]    Processed: 85,000 entries, Unified: 13,076
+[18:13:47]    Processed: 86,000 entries, Unified: 13,112
+[18:13:47]    Processed: 87,000 entries, Unified: 13,178
+[18:13:47]    Processed: 88,000 entries, Unified: 13,264
+[18:13:47]    Processed: 89,000 entries, Unified: 13,299
+[18:13:47]    Processed: 90,000 entries, Unified: 13,367
+[18:13:47]    Processed: 91,000 entries, Unified: 13,397
+[18:13:47]    Processed: 92,000 entries, Unified: 13,445
+[18:13:47]    Processed: 93,000 entries, Unified: 13,463
+[18:13:47]    Processed: 94,000 entries, Unified: 13,488
+[18:13:47]    Processed: 95,000 entries, Unified: 13,583
+[18:13:47]    Processed: 96,000 entries, Unified: 13,631
+[18:13:47]    Processed: 97,000 entries, Unified: 13,701
+[18:13:47]    Processed: 98,000 entries, Unified: 13,731
+[18:13:47]    Processed: 99,000 entries, Unified: 13,768
+[18:13:47]    Processed: 100,000 entries, Unified: 13,825
+[18:13:47]    Processed: 101,000 entries, Unified: 13,856
+[18:13:47]    Processed: 102,000 entries, Unified: 13,933
+[18:13:47]    Processed: 103,000 entries, Unified: 13,983
+[18:13:47]    Processed: 104,000 entries, Unified: 14,044
+[18:13:47]    Processed: 105,000 entries, Unified: 14,112
+[18:13:47]    Processed: 106,000 entries, Unified: 14,210
+[18:13:47]    Processed: 107,000 entries, Unified: 14,284
+[18:13:47]    Processed: 108,000 entries, Unified: 14,361
+[18:13:47]    Processed: 109,000 entries, Unified: 14,434
+[18:13:47]    Processed: 110,000 entries, Unified: 14,526
+[18:13:47]    Processed: 111,000 entries, Unified: 14,605
+[18:13:47]    Processed: 112,000 entries, Unified: 14,643
+[18:13:47]    Processed: 113,000 entries, Unified: 14,698
+[18:13:47]    Processed: 114,000 entries, Unified: 14,791
+[18:13:47]    Processed: 115,000 entries, Unified: 14,856
+[18:13:47]    Processed: 116,000 entries, Unified: 14,915
+[18:13:47]    Processed: 117,000 entries, Unified: 15,012
+[18:13:47]    Processed: 118,000 entries, Unified: 15,076
+[18:13:47]    Processed: 119,000 entries, Unified: 15,125
+[18:13:47]    Processed: 120,000 entries, Unified: 15,288
+[18:13:47]    Processed: 121,000 entries, Unified: 15,392
+[18:13:47]    Processed: 122,000 entries, Unified: 15,622
+[18:13:47]    Processed: 123,000 entries, Unified: 15,795
+[18:13:47]    Processed: 124,000 entries, Unified: 16,298
+[18:13:47]    Processed: 125,000 entries, Unified: 16,846
+[18:13:47]    Processed: 126,000 entries, Unified: 17,498
+[18:13:47]    Processed: 127,000 entries, Unified: 17,997
+[18:13:47]    Processed: 128,000 entries, Unified: 18,557
+[18:13:47]    Processed: 129,000 entries, Unified: 19,119
+[18:13:47]    Processed: 130,000 entries, Unified: 19,728
+[18:13:47]    Processed: 131,000 entries, Unified: 20,348
+[18:13:47]    Processed: 132,000 entries, Unified: 21,094
+[18:13:47]    Processed: 133,000 entries, Unified: 21,866
+[18:13:47]    Processed: 134,000 entries, Unified: 22,441
+[18:13:47]    Processed: 135,000 entries, Unified: 22,957
+[18:13:47]    Processed: 136,000 entries, Unified: 23,398
+[18:13:47]    Processed: 137,000 entries, Unified: 23,781
+[18:13:47]    Processed: 138,000 entries, Unified: 24,032
+[18:13:47]    Processed: 139,000 entries, Unified: 24,357
+[18:13:47]    Processed: 140,000 entries, Unified: 24,614
+[18:13:47]    Processed: 141,000 entries, Unified: 24,824
+[18:13:47]    Processed: 142,000 entries, Unified: 24,991
+[18:13:47]    Processed: 143,000 entries, Unified: 25,190
+[18:13:47]    Processed: 144,000 entries, Unified: 25,352
+[18:13:47]    Processed: 145,000 entries, Unified: 25,572
+[18:13:47]    Processed: 146,000 entries, Unified: 25,807
+[18:13:47]    Processed: 147,000 entries, Unified: 25,997
+[18:13:47]    Processed: 148,000 entries, Unified: 26,208
+[18:13:47]    Processed: 149,000 entries, Unified: 26,379
+[18:13:47]    Processed: 150,000 entries, Unified: 26,579
+[18:13:47]    Processed: 151,000 entries, Unified: 26,781
+[18:13:47]    Processed: 152,000 entries, Unified: 26,997
+[18:13:47]    Processed: 153,000 entries, Unified: 27,206
+[18:13:47]    Processed: 154,000 entries, Unified: 27,499
+[18:13:47]    Processed: 155,000 entries, Unified: 28,042
+[18:13:47]    Processed: 156,000 entries, Unified: 28,589
+[18:13:47]    Processed: 157,000 entries, Unified: 29,243
+[18:13:47]    Processed: 158,000 entries, Unified: 29,791
+[18:13:47]    Processed: 159,000 entries, Unified: 30,315
+[18:13:47]    Processed: 160,000 entries, Unified: 30,903
+[18:13:47]    Processed: 161,000 entries, Unified: 31,579
+[18:13:47]    Processed: 162,000 entries, Unified: 32,165
+[18:13:47]    Processed: 163,000 entries, Unified: 32,887
+[18:13:47]    Processed: 164,000 entries, Unified: 33,426
+[18:13:47]    Processed: 165,000 entries, Unified: 33,922
+[18:13:47]    Processed: 166,000 entries, Unified: 34,368
+[18:13:47]    Processed: 167,000 entries, Unified: 34,667
+[18:13:47]    Processed: 168,000 entries, Unified: 34,916
+[18:13:47]    Processed: 169,000 entries, Unified: 35,187
+[18:13:47]    Processed: 170,000 entries, Unified: 35,494
+[18:13:47]    Processed: 171,000 entries, Unified: 35,752
+[18:13:47]    Processed: 172,000 entries, Unified: 35,945
+[18:13:47]    Processed: 173,000 entries, Unified: 36,186
+[18:13:47]    Processed: 174,000 entries, Unified: 36,395
+[18:13:48]    Processed: 175,000 entries, Unified: 36,638
+[18:13:48]    Processed: 176,000 entries, Unified: 36,767
+[18:13:48]    Processed: 177,000 entries, Unified: 37,044
+[18:13:48]    Processed: 178,000 entries, Unified: 37,240
+[18:13:48]    Processed: 179,000 entries, Unified: 37,414
+[18:13:48]    Processed: 180,000 entries, Unified: 37,647
+[18:13:48]    Processed: 181,000 entries, Unified: 37,825
+[18:13:48]    Processed: 182,000 entries, Unified: 38,016
+[18:13:48]    Processed: 183,000 entries, Unified: 38,285
+[18:13:48]    Processed: 184,000 entries, Unified: 38,450
+[18:13:48]    Processed: 185,000 entries, Unified: 38,622
+[18:13:48]    Processed: 186,000 entries, Unified: 38,803
+[18:13:48]    Processed: 187,000 entries, Unified: 39,032
+[18:13:48]    Processed: 188,000 entries, Unified: 39,264
+[18:13:48]    Processed: 189,000 entries, Unified: 39,420
+[18:13:48]    Processed: 190,000 entries, Unified: 39,715
+[18:13:48]    Processed: 191,000 entries, Unified: 39,869
+[18:13:48]    Processed: 192,000 entries, Unified: 40,064
+[18:13:48]    Processed: 193,000 entries, Unified: 40,204
+[18:13:48]    Processed: 194,000 entries, Unified: 40,427
+[18:13:48]    Processed: 195,000 entries, Unified: 40,658
+[18:13:48]    Processed: 196,000 entries, Unified: 40,845
+[18:13:48]    Processed: 197,000 entries, Unified: 41,398
+[18:13:48]    Processed: 198,000 entries, Unified: 41,937
+[18:13:48]    Processed: 199,000 entries, Unified: 42,496
+[18:13:48]    Processed: 200,000 entries, Unified: 43,011
+[18:13:48]    Processed: 201,000 entries, Unified: 43,544
+[18:13:48]    Processed: 202,000 entries, Unified: 44,140
+[18:13:48]    Processed: 203,000 entries, Unified: 44,751
+[18:13:48]    Processed: 204,000 entries, Unified: 45,399
+[18:13:48]    Processed: 205,000 entries, Unified: 46,164
+[18:13:48]    Processed: 206,000 entries, Unified: 46,903
+[18:13:48]    Processed: 207,000 entries, Unified: 47,460
+[18:13:48]    Processed: 208,000 entries, Unified: 47,970
+[18:13:48]    Processed: 209,000 entries, Unified: 48,409
+[18:13:48]    Processed: 210,000 entries, Unified: 48,733
+[18:13:48]    Processed: 211,000 entries, Unified: 48,984
+[18:13:48]    Processed: 212,000 entries, Unified: 49,317
+[18:13:48]    Processed: 213,000 entries, Unified: 49,597
+[18:13:48]    Processed: 214,000 entries, Unified: 49,799
+[18:13:48]    Processed: 215,000 entries, Unified: 49,974
+[18:13:48]    Processed: 216,000 entries, Unified: 50,203
+[18:13:48]    Processed: 217,000 entries, Unified: 50,371
+[18:13:48]    Processed: 218,000 entries, Unified: 50,600
+[18:13:48]    Processed: 219,000 entries, Unified: 50,818
+[18:13:48]    Processed: 220,000 entries, Unified: 51,013
+[18:13:48]    Processed: 221,000 entries, Unified: 51,220
+[18:13:48]    Processed: 222,000 entries, Unified: 51,524
+[18:13:48]    Processed: 223,000 entries, Unified: 52,011
+[18:13:48]    Processed: 224,000 entries, Unified: 52,342
+[18:13:48]    Processed: 225,000 entries, Unified: 52,754
+[18:13:48]    Processed: 226,000 entries, Unified: 53,118
+[18:13:48]    Processed: 227,000 entries, Unified: 53,554
+[18:13:48]    Processed: 228,000 entries, Unified: 53,928
+[18:13:48]    Processed: 229,000 entries, Unified: 54,300
+[18:13:48]    Processed: 230,000 entries, Unified: 54,711
+[18:13:48]    Processed: 231,000 entries, Unified: 55,046
+[18:13:48]    Processed: 232,000 entries, Unified: 55,394
+[18:13:48]    Processed: 233,000 entries, Unified: 55,719
+[18:13:48]    Processed: 234,000 entries, Unified: 56,064
+[18:13:48]    Processed: 235,000 entries, Unified: 56,457
+[18:13:48]    Processed: 236,000 entries, Unified: 56,850
+[18:13:48]    Processed: 237,000 entries, Unified: 57,292
+[18:13:48]    Processed: 238,000 entries, Unified: 57,672
+[18:13:48]    Processed: 239,000 entries, Unified: 58,089
+[18:13:48]    Processed: 240,000 entries, Unified: 58,446
+[18:13:48]    Processed: 241,000 entries, Unified: 58,822
+[18:13:48]    Processed: 242,000 entries, Unified: 59,196
+[18:13:48]    Processed: 243,000 entries, Unified: 59,601
+[18:13:48]    Processed: 244,000 entries, Unified: 59,978
+[18:13:48]    Processed: 245,000 entries, Unified: 60,396
+[18:13:48]    Processed: 246,000 entries, Unified: 60,752
+[18:13:48]    Processed: 247,000 entries, Unified: 61,172
+[18:13:48]    Processed: 248,000 entries, Unified: 61,553
+[18:13:48]    Processed: 249,000 entries, Unified: 61,891
+[18:13:48]    Processed: 250,000 entries, Unified: 62,257
+[18:13:48]    Processed: 251,000 entries, Unified: 62,636
+[18:13:48]    Processed: 252,000 entries, Unified: 63,039
+[18:13:48]    Processed: 253,000 entries, Unified: 63,502
+[18:13:48]    Processed: 254,000 entries, Unified: 63,857
+[18:13:48]    Processed: 255,000 entries, Unified: 64,194
+[18:13:48]    Processed: 256,000 entries, Unified: 64,549
+[18:13:48]    Processed: 257,000 entries, Unified: 64,900
+[18:13:48]    Processed: 258,000 entries, Unified: 65,279
+[18:13:48]    Processed: 259,000 entries, Unified: 66,097
+[18:13:48]    Processed: 260,000 entries, Unified: 66,942
+[18:13:48]    Processed: 261,000 entries, Unified: 67,712
+[18:13:48]    Processed: 262,000 entries, Unified: 68,622
+[18:13:48]    Processed: 263,000 entries, Unified: 69,446
+[18:13:48]    Processed: 264,000 entries, Unified: 70,372
+[18:13:48]    Processed: 265,000 entries, Unified: 71,273
+[18:13:48]    Processed: 266,000 entries, Unified: 72,145
+[18:13:48]    Processed: 267,000 entries, Unified: 72,786
+[18:13:48]    Processed: 268,000 entries, Unified: 73,558
+[18:13:48]    Processed: 269,000 entries, Unified: 74,361
+[18:13:48]    Processed: 270,000 entries, Unified: 75,097
+[18:13:48]    Processed: 271,000 entries, Unified: 75,978
+[18:13:48]    Processed: 272,000 entries, Unified: 76,753
+[18:13:48]    Processed: 273,000 entries, Unified: 77,668
+[18:13:48]    Processed: 274,000 entries, Unified: 78,523
+[18:13:48]    Processed: 275,000 entries, Unified: 79,198
+[18:13:48]    Processed: 276,000 entries, Unified: 80,030
+[18:13:48]    Processed: 277,000 entries, Unified: 80,855
+[18:13:48]    Processed: 278,000 entries, Unified: 81,697
+[18:13:48]    Processed: 279,000 entries, Unified: 82,370
+[18:13:48]    Processed: 280,000 entries, Unified: 83,212
+[18:13:48]    Processed: 281,000 entries, Unified: 84,100
+[18:13:48]    Processed: 282,000 entries, Unified: 84,987
+[18:13:48] ✅ Structure unification complete!
+[18:13:48]    Total processed: 282,044
+[18:13:48]    Unified entries: 85,030
+[18:13:48] === VERIFYING UNIFIED STRUCTURE ===
+[18:13:48] Total unified entries: 279,682
+[18:13:48] Character dialogue entries: 85,030
+[18:13:48] Instruction entries: 208,116
+[18:13:48] 
+Sample character dialogue entries:
+[18:13:48]   ノイズ: 'がーがっが！この子は最強ロボのせつこちゃんだぜ！' | Instructions: '...' 
+[18:13:48]   BB: 'はーい！！失敗！だつらーく！！' | Instructions: '...' 
+[18:13:48]   ノイズ: 'BBの顔がに！！' | Instructions: '...' 
+[18:13:48]   ノイズ: 'なんだってー！って声もになってるー！！' | Instructions: '...' 
+[18:13:48]   ノイズ: 'がみんなを見渡す' | Instructions: 'おいおい？急に怖くなったか？...' 
+[18:13:48] 
+Sample instruction entries:
+[18:13:48]   Instructions: '↓撮影カット数
+(撮影指示かけないところは「空欄」と書いて下さい。) | [=countifs(D12:D,"キャラ名",C12:C,"TRUE")]...'
+[18:13:48]   Instructions: 'トミカ、プラレールを広げてみんながその中にる様子
+※サンサンキャラはぬいぐるみ...'
+[18:13:48]   Instructions: '今日も街をパトロール！...'
+[18:13:48]   Instructions: '今日も街をパトロール！...'
+[18:13:48]   Instructions: 'ぶんぶんー！...'
+[18:13:48] ================================================================================
+[18:13:48] STRUCTURE UNIFICATION COMPLETE
+[18:13:48] ================================================================================

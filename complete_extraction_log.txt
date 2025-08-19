@@ -1,0 +1,1119 @@
+[17:57:41] ================================================================================
+[17:57:41] STARTING COMPLETE EXTRACTION OF ALL MISSING DIALOGUE DATA
+[17:57:41] ================================================================================
+[17:57:41] Found 256 scripts with missing dialogue data
+[17:57:41] Starting extraction for 256 scripts...
+[17:57:41] 
+[1/256] Processing B2304
+[17:57:41] Processing B2304: 【タイアップ】ルナヨーグルト...
+[17:57:41]    ❌ Failed: Invalid URL format
+[17:57:43] 
+[2/256] Processing B2321
+[17:57:43] Processing B2321: ニセモノ鬼ママと幼稚園でかくれんぼ...
+[17:57:43]    ❌ Failed: Invalid URL format
+[17:57:44] 
+[3/256] Processing B2252
+[17:57:44] Processing B2252: マイクラ巨人...
+[17:57:47]    ✅ Success: 159 dialogue entries extracted
+[17:57:48] 
+[4/256] Processing B2257
+[17:57:48] Processing B2257: 【タイアップ】イルメール_1本目...
+[17:57:50]    ✅ Success: 313 dialogue entries extracted
+[17:57:51] 
+[5/256] Processing B2256
+[17:57:51] Processing B2256: きさらぎ駅...
+[17:57:53]    ✅ Success: 139 dialogue entries extracted
+[17:57:55] 
+[6/256] Processing B2254
+[17:57:55] Processing B2254: 【タイアップ】25_らくがキッズ1本目...
+[17:57:56]    ✅ Success: 322 dialogue entries extracted
+[17:57:57] 
+[7/256] Processing B2255
+[17:57:57] Processing B2255: うんち展...
+[17:57:58]    ✅ Success: 112 dialogue entries extracted
+[17:58:00] 
+[8/256] Processing B2253
+[17:58:00] Processing B2253: 天才キッズが怪盗だったら...
+[17:58:00]    ❌ Failed: Invalid URL format
+[17:58:02] 
+[9/256] Processing B2251
+[17:58:02] Processing B2251: 都市伝説　ターボババア...
+[17:58:03]    ✅ Success: 10 dialogue entries extracted
+[17:58:04] 
+[10/256] Processing B2242
+[17:58:04] Processing B2242: 【タイアップ】パイロット...
+[17:58:05]    ✅ Success: 16 dialogue entries extracted
+[17:58:06] 
+[11/256] Processing B2250
+[17:58:06] Processing B2250: モンハンパロ...
+[17:58:08]    ✅ Success: 174 dialogue entries extracted
+[17:58:09] 
+[12/256] Processing B2245
+[17:58:09] Processing B2245: 【タイアップ】マテル3本目_JW...
+[17:58:11]    ✅ Success: 12 dialogue entries extracted
+[17:58:12] 
+[13/256] Processing B2237
+[17:58:12] Processing B2237: お絵描き紙芝居はたらく細胞...
+[17:58:13]    ❌ Failed: HTTP 410
+[17:58:15] 
+[14/256] Processing B2243
+[17:58:15] Processing B2243: 【タイアップ】マテル2本目_HW...
+[17:58:16]    ✅ Success: 367 dialogue entries extracted
+[17:58:17] 
+[15/256] Processing B2241
+[17:58:17] Processing B2241: 【タイアップ】らくがキッズ4本目...
+[17:58:18]    ✅ Success: 302 dialogue entries extracted
+[17:58:19] 
+[16/256] Processing B2240
+[17:58:19] Processing B2240: 【タイアップ】マテル1本目_HW...
+[17:58:20]    ✅ Success: 283 dialogue entries extracted
+[17:58:22] 
+[17/256] Processing B2247
+[17:58:22] Processing B2247: comotto関連...
+[17:58:23]    ✅ Success: 9 dialogue entries extracted
+[17:58:25] 
+[18/256] Processing B2239
+[17:58:25] Processing B2239: 【タイアップ】デアゴ1本目_シーモンスターミニ...
+[17:58:26]    ✅ Success: 367 dialogue entries extracted
+[17:58:27] 
+[19/256] Processing B2249
+[17:58:27] Processing B2249: レゴマリオ...
+[17:58:31]    ✅ Success: 173 dialogue entries extracted
+[17:58:33] 
+[20/256] Processing B2248
+[17:58:33] Processing B2248: 【タイアップ】トミカ×プラレール...
+[17:58:34]    ✅ Success: 374 dialogue entries extracted
+[17:58:36] 
+[21/256] Processing B2244
+[17:58:36] Processing B2244: ハッピーセット ジュラシック...
+[17:58:37]    ✅ Success: 157 dialogue entries extracted
+[17:58:39] 
+[22/256] Processing B2238
+[17:58:39] Processing B2238: 【タイアップ】docomo...
+[17:58:40]    ✅ Success: 314 dialogue entries extracted
+[17:58:41] 
+[23/256] Processing B2246
+[17:58:41] Processing B2246: プリキュアペンライト...
+[17:58:42]    ✅ Success: 161 dialogue entries extracted
+[17:58:43] 
+[24/256] Processing B2233
+[17:58:43] Processing B2233: 呪いのスマホ...
+[17:58:45]    ✅ Success: 11 dialogue entries extracted
+[17:58:46] 
+[25/256] Processing B2236
+[17:58:46] Processing B2236: サンサンがハギーワギーと合体...
+[17:58:47]    ✅ Success: 15 dialogue entries extracted
+[17:58:47] 
+📊 Progress Report (25/256):
+[17:58:47]    Success: 21
+[17:58:47]    Failed: 4
+[17:58:47]    Success Rate: 84.0%
+[17:58:47]    Dialogue Extracted: 3790 lines
+[17:58:49] 
+[26/256] Processing B2235
+[17:58:49] Processing B2235: サンサンバースデー...
+[17:58:51]    ✅ Success: 250 dialogue entries extracted
+[17:58:53] 
+[27/256] Processing B2234
+[17:58:53] Processing B2234: 自動販売機から出てきたものでエンドラを倒せ！...
+[17:58:54]    ✅ Success: 162 dialogue entries extracted
+[17:58:56] 
+[28/256] Processing B2232
+[17:58:56] Processing B2232: 天才キッズハチャメチャお医者さんごっこ...
+[17:58:57]    ✅ Success: 199 dialogue entries extracted
+[17:58:58] 
+[29/256] Processing B2231
+[17:58:58] Processing B2231: レゴでイカゲーム...
+[17:59:00]    ✅ Success: 189 dialogue entries extracted
+[17:59:02] 
+[30/256] Processing B2230
+[17:59:02] Processing B2230: もしも天才キッズが逮捕されたら...
+[17:59:03]    ❌ Failed: HTTP 400
+[17:59:05] 
+[31/256] Processing B2224
+[17:59:05] Processing B2224: 大量の犯人VSパトカー...
+[17:59:06]    ✅ Success: 34 dialogue entries extracted
+[17:59:07] 
+[32/256] Processing B2228
+[17:59:07] Processing B2228: 【寸劇】偽物のサンサン登場！？友達になりきった不審者を捕まえろ！...
+[17:59:08]    ✅ Success: 35 dialogue entries extracted
+[17:59:10] 
+[33/256] Processing B2222
+[17:59:10] Processing B2222: ゴミ分別マナー...
+[17:59:11]    ✅ Success: 9 dialogue entries extracted
+[17:59:13] 
+[34/256] Processing B2226
+[17:59:13] Processing B2226: サンサンハンバーグ...
+[17:59:14]    ✅ Success: 150 dialogue entries extracted
+[17:59:15] 
+[35/256] Processing B2227
+[17:59:15] Processing B2227: 【節分】小学校で鬼大量発生！？元の姿に戻すために鬼ごっこから逃げ切ろう！...
+[17:59:17]    ✅ Success: 206 dialogue entries extracted
+[17:59:18] 
+[36/256] Processing B2217
+[17:59:18] Processing B2217: ダンボールクレーンゲーム工作...
+[17:59:19]    ✅ Success: 149 dialogue entries extracted
+[17:59:20] 
+[37/256] Processing B2225
+[17:59:20] Processing B2225: 【ハッピーセット】おさるのジョージ...
+[17:59:22]    ✅ Success: 182 dialogue entries extracted
+[17:59:23] 
+[38/256] Processing B2221
+[17:59:23] Processing B2221: ねんど福笑い...
+[17:59:25]    ✅ Success: 7 dialogue entries extracted
+[17:59:26] 
+[39/256] Processing B2220
+[17:59:26] Processing B2220: お風呂でミニカー...
+[17:59:28]    ✅ Success: 141 dialogue entries extracted
+[17:59:29] 
+[40/256] Processing B2209
+[17:59:29] Processing B2209: 風邪をひいたときのマナー...
+[17:59:31]    ✅ Success: 10 dialogue entries extracted
+[17:59:33] 
+[41/256] Processing B2219
+[17:59:33] Processing B2219: サンリオチョコエッグ...
+[17:59:34]    ✅ Success: 191 dialogue entries extracted
+[17:59:35] 
+[42/256] Processing B2180
+[17:59:35] Processing B2180: 【タイアップ】ヤマハ英語教室...
+[17:59:37]    ✅ Success: 129 dialogue entries extracted
+[17:59:39] 
+[43/256] Processing B2212
+[17:59:39] Processing B2212: 英語でお年玉対決...
+[17:59:40]    ✅ Success: 155 dialogue entries extracted
+[17:59:50] ================================================================================
+[17:59:50] STARTING COMPLETE EXTRACTION OF ALL MISSING DIALOGUE DATA
+[17:59:50] ================================================================================
+[17:59:50] Found 218 scripts with missing dialogue data
+[17:59:50] Starting extraction for 218 scripts...
+[17:59:50] 
+[1/218] Processing B2304
+[17:59:50] Processing B2304: 【タイアップ】ルナヨーグルト...
+[17:59:50]    ❌ Failed: Invalid URL format
+[17:59:51] 
+[2/218] Processing B2321
+[17:59:51] Processing B2321: ニセモノ鬼ママと幼稚園でかくれんぼ...
+[17:59:51]    ❌ Failed: Invalid URL format
+[17:59:52] 
+[3/218] Processing B2253
+[17:59:52] Processing B2253: 天才キッズが怪盗だったら...
+[17:59:52]    ❌ Failed: Invalid URL format
+[17:59:53] 
+[4/218] Processing B2237
+[17:59:53] Processing B2237: お絵描き紙芝居はたらく細胞...
+[17:59:53]    ❌ Failed: HTTP 410
+[17:59:55] 
+[5/218] Processing B2230
+[17:59:55] Processing B2230: もしも天才キッズが逮捕されたら...
+[17:59:56]    ❌ Failed: HTTP 400
+[17:59:57] 
+[6/218] Processing B2216
+[17:59:57] Processing B2216: 雪遊びマナー...
+[17:59:59]    ❌ Failed: HTTP 400
+[18:00:01] 
+[7/218] Processing B2215
+[18:00:01] Processing B2215: ギャビーのパーラービーズキーホルダー...
+[18:00:02]    ✅ Success: 6 dialogue entries extracted
+[18:00:04] 
+[8/218] Processing B2211
+[18:00:04] Processing B2211: リトプラタカトミ ロケ...
+[18:00:05]    ✅ Success: 158 dialogue entries extracted
+[18:00:07] 
+[9/218] Processing B2214
+[18:00:07] Processing B2214: わんぷりステンドグラスDIY...
+[18:00:09]    ✅ Success: 119 dialogue entries extracted
+[18:00:10] 
+[10/218] Processing B2218
+[18:00:10] Processing B2218: 初詣マナー...
+[18:00:11]    ✅ Success: 166 dialogue entries extracted
+[18:00:13] 
+[11/218] Processing B2210
+[18:00:13] Processing B2210: アナ雪チョコエッグ大量開封...
+[18:00:14]    ✅ Success: 152 dialogue entries extracted
+[18:00:15] 
+[12/218] Processing B2182
+[18:00:15] Processing B2182: 【タイアップ】リトプラ2本目...
+[18:00:16]    ✅ Success: 237 dialogue entries extracted
+[18:00:17] 
+[13/218] Processing B2213
+[18:00:17] Processing B2213: リトプラ関連動画（ピンク対水色！3番勝負！）...
+[18:00:19]    ✅ Success: 136 dialogue entries extracted
+[18:00:20] 
+[14/218] Processing B2197
+[18:00:20] Processing B2197: サンサン赤鼻のトナカイ...
+[18:00:21]    ✅ Success: 120 dialogue entries extracted
+[18:00:22] 
+[15/218] Processing B2206
+[18:00:22] Processing B2206: アナ雪プリン&グミ...
+[18:00:24]    ✅ Success: 11 dialogue entries extracted
+[18:00:25] 
+[16/218] Processing B2204
+[18:00:25] Processing B2204: マテルジュラシックパーク　アドベントカレンダー...
+[18:00:26]    ✅ Success: 125 dialogue entries extracted
+[18:00:27] 
+[17/218] Processing B2201
+[18:00:27] Processing B2201: ディズニーチョコエッグ2本目（DIY）...
+[18:00:28]    ✅ Success: 139 dialogue entries extracted
+[18:00:30] 
+[18/218] Processing B2198
+[18:00:30] Processing B2198: ディズニープリンセスチョコエッグ1本目（大量開封）...
+[18:00:31]    ✅ Success: 6 dialogue entries extracted
+[18:00:32] 
+[19/218] Processing B2200
+[18:00:32] Processing B2200: シルバニアクリスマスDIY...
+[18:00:33]    ✅ Success: 7 dialogue entries extracted
+[18:00:34] 
+[20/218] Processing B2195
+[18:00:34] Processing B2195: わんぷりクリスマスドールハウスDIY...
+[18:00:35]    ✅ Success: 8 dialogue entries extracted
+[18:00:37] 
+[21/218] Processing B2203
+[18:00:37] Processing B2203: ハッピーセット_マリオカート2本目...
+[18:00:38]    ✅ Success: 150 dialogue entries extracted
+[18:00:40] 
+[22/218] Processing B2208
+[18:00:40] Processing B2208: ほねほね_2本目...
+[18:00:41]    ✅ Success: 121 dialogue entries extracted
+[18:00:42] 
+[23/218] Processing B2207
+[18:00:42] Processing B2207: ほねほね_1本目...
+[18:00:43]    ✅ Success: 144 dialogue entries extracted
+[18:00:45] 
+[24/218] Processing B2193
+[18:00:45] Processing B2193: サンサンクリスマスツリー...
+[18:00:48]    ❌ Failed: HTTP 400
+[18:00:48] 
+[25/218] Processing B2205
+[18:00:48] Processing B2205: 町田グリーティング...
+[18:00:51]    ✅ Success: 84 dialogue entries extracted
+[18:00:51] 
+📊 Progress Report (25/218):
+[18:00:51]    Success: 18
+[18:00:51]    Failed: 7
+[18:00:51]    Success Rate: 72.0%
+[18:00:51]    Dialogue Extracted: 1889 lines
+[18:00:52] 
+[26/218] Processing B2179
+[18:00:52] Processing B2179: 【タイアップ】ヨシリツ_LaQ 2/2...
+[18:00:54]    ✅ Success: 210 dialogue entries extracted
+[18:00:55] 
+[27/218] Processing B2174
+[18:00:55] Processing B2174: 【タイアップ】シュライヒ_エルドラド3/4...
+[18:00:56]    ✅ Success: 352 dialogue entries extracted
+[18:00:57] 
+[28/218] Processing B2199
+[18:00:57] Processing B2199: ユニトロボーン エルドラド関連...
+[18:00:59]    ✅ Success: 153 dialogue entries extracted
+[18:01:00] 
+[29/218] Processing B2202
+[18:01:00] Processing B2202: ハッピーセット_マリオカート1本目...
+[18:01:01]    ✅ Success: 120 dialogue entries extracted
+[18:01:03] 
+[30/218] Processing B2196
+[18:01:03] Processing B2196: ギャビーの仕掛け塗り絵...
+[18:01:04]    ✅ Success: 127 dialogue entries extracted
+[18:01:05] 
+[31/218] Processing B2173
+[18:01:05] Processing B2173: 【タイアップ】デアゴ_スーパーアニマル&. 5/4...
+[18:01:07]    ✅ Success: 14 dialogue entries extracted
+[18:01:08] 
+[32/218] Processing B2188
+[18:01:08] Processing B2188: 【タイアップ】タカラトミー_ギャビー...
+[18:01:09]    ✅ Success: 11 dialogue entries extracted
+[18:01:10] 
+[33/218] Processing B2178
+[18:01:10] Processing B2178: 【タイアップ】ヨシリツ_LaQ 1/2...
+[18:01:12]    ✅ Success: 212 dialogue entries extracted
+[18:01:13] 
+[34/218] Processing B2166
+[18:01:13] Processing B2166: 【タイアップ】タイトー_らくがキッズ（まわるーくん）3/4...
+[18:01:14]    ✅ Success: 254 dialogue entries extracted
+[18:01:16] 
+[35/218] Processing B2194
+[18:01:16] Processing B2194: わんだふるぷりきゅあ塗り絵...
+[18:01:17]    ✅ Success: 21 dialogue entries extracted
+[18:01:18] 
+[36/218] Processing B2192
+[18:01:18] Processing B2192: 映画館マナー...
+[18:01:19]    ✅ Success: 151 dialogue entries extracted
+[18:01:20] 
+[37/218] Processing B2172
+[18:01:20] Processing B2172: 【タイアップ】トイザらス...
+[18:01:23]    ✅ Success: 243 dialogue entries extracted
+[18:01:24] 
+[38/218] Processing B2165
+[18:01:24] Processing B2165: 【タイアップ】カワダ_ダイヤブロック2/2...
+[18:01:25]    ✅ Success: 222 dialogue entries extracted
+[18:01:27] 
+[39/218] Processing B2190
+[18:01:27] Processing B2190: シルバニアレストランDIY...
+[18:01:28]    ✅ Success: 9 dialogue entries extracted
+[18:01:30] 
+[40/218] Processing B2181
+[18:01:30] Processing B2181: サンサン脳みそケーキ...
+[18:01:31]    ✅ Success: 9 dialogue entries extracted
+[18:01:33] 
+[41/218] Processing B2191
+[18:01:33] Processing B2191: サンサンアレンジパン...
+[18:01:35]    ✅ Success: 140 dialogue entries extracted
+[18:01:35] 
+[42/218] Processing B2189
+[18:01:35] Processing B2189: サンサンクリスマスチョコパイ...
+[18:01:37]    ❌ Failed: HTTP 400
+[18:01:38] 
+[43/218] Processing B2184
+[18:01:38] Processing B2184: 飛行機マナー...
+[18:01:39]    ✅ Success: 9 dialogue entries extracted
+[18:01:41] 
+[44/218] Processing B2176
+[18:01:41] Processing B2176: サンサンキャンディー...
+[18:01:42]    ✅ Success: 136 dialogue entries extracted
+[18:01:43] 
+[45/218] Processing B2183
+[18:01:43] Processing B2183: サンサンオムライス...
+[18:01:45]    ✅ Success: 131 dialogue entries extracted
+[18:01:46] 
+[46/218] Processing B2187
+[18:01:46] Processing B2187: シャカシャカアクアビーズ...
+[18:01:49]    ✅ Success: 7 dialogue entries extracted
+[18:01:50] 
+[47/218] Processing B2163
+[18:01:50] Processing B2163: 【タイアップ】カワダ_ダイヤブロック1/2...
+[18:01:52]    ✅ Success: 291 dialogue entries extracted
+[18:01:53] 
+[48/218] Processing B2162
+[18:01:53] Processing B2162: 【タイアップ】タカラトミー_ジョブレイバー2/2...
+[18:01:55]    ✅ Success: 231 dialogue entries extracted
+[18:01:57] 
+[49/218] Processing B2161
+[18:01:57] Processing B2161: 【タイアップ】デアゴ_ストレッチーズワイルドズータント...
+[18:01:58]    ✅ Success: 15 dialogue entries extracted
+[18:01:59] 
+[50/218] Processing B2164
+[18:01:59] Processing B2164: ハロウィンお化けハウス...
+[18:01:59]    ❌ Failed: HTTP 410
+[18:01:59] 
+📊 Progress Report (50/218):
+[18:01:59]    Success: 41
+[18:01:59]    Failed: 9
+[18:01:59]    Success Rate: 82.0%
+[18:01:59]    Dialogue Extracted: 4957 lines
+[18:02:00] 
+[51/218] Processing B2186
+[18:02:00] Processing B2186: ハロウィン紙コップ...
+[18:02:02]    ✅ Success: 154 dialogue entries extracted
+[18:02:04] 
+[52/218] Processing B2177
+[18:02:04] Processing B2177: カラフルピーマン大変身...
+[18:02:06]    ✅ Success: 121 dialogue entries extracted
+[18:02:07] 
+[53/218] Processing B2185
+[18:02:07] Processing B2185: エスカレーターマナー...
+[18:02:09]    ✅ Success: 173 dialogue entries extracted
+[18:02:10] 
+[54/218] Processing B2160
+[18:02:10] Processing B2160: 【タイアップ】住宅情報館1/2...
+[18:02:12]    ✅ Success: 18 dialogue entries extracted
+[18:02:13] 
+[55/218] Processing B2171
+[18:02:13] Processing B2171: おえかきグミランド...
+[18:02:14]    ✅ Success: 171 dialogue entries extracted
+[18:02:15] 
+[56/218] Processing B2170
+[18:02:15] Processing B2170: ハッピーセットプラレール...
+[18:02:17]    ✅ Success: 5 dialogue entries extracted
+[18:02:19] 
+[57/218] Processing B2155
+[18:02:19] Processing B2155: 【タイアップ】シュライヒ_クラッシュモービル...
+[18:02:20]    ✅ Success: 301 dialogue entries extracted
+[18:02:21] 
+[58/218] Processing B2175
+[18:02:21] Processing B2175: ユニトロボーンドラゴン...
+[18:02:22]    ✅ Success: 4 dialogue entries extracted
+[18:02:24] 
+[59/218] Processing B2169
+[18:02:24] Processing B2169: シルバニアハロウィン...
+[18:02:25]    ✅ Success: 10 dialogue entries extracted
+[18:02:25] 
+[60/218] Processing B2159
+[18:02:25] Processing B2159: ミニオンチョコエッグ...
+[18:02:27]    ✅ Success: 150 dialogue entries extracted
+[18:02:29] 
+[61/218] Processing B2167
+[18:02:29] Processing B2167: 歯磨きマナー...
+[18:02:31]    ✅ Success: 132 dialogue entries extracted
+[18:02:32] 
+[62/218] Processing B2158
+[18:02:32] Processing B2158: 白玉ウォータースライダー...
+[18:02:33]    ❌ Failed: HTTP 400
+[18:02:35] 
+[63/218] Processing B2154
+[18:02:35] Processing B2154: 【タイアップ】デアゴ_もっちり...
+[18:02:36]    ✅ Success: 11 dialogue entries extracted
+[18:02:37] 
+[64/218] Processing B2168
+[18:02:37] Processing B2168: お菓子の家作り...
+[18:02:38]    ✅ Success: 6 dialogue entries extracted
+[18:02:40] 
+[65/218] Processing B2157
+[18:02:40] Processing B2157: 幼稚園バスマナー...
+[18:02:41]    ✅ Success: 151 dialogue entries extracted
+[18:02:42] 
+[66/218] Processing B2153
+[18:02:42] Processing B2153: サンサンチロルチョコ...
+[18:02:43]    ✅ Success: 146 dialogue entries extracted
+[18:02:45] 
+[67/218] Processing B2152
+[18:02:45] Processing B2152: プリキュアDIYドールハウス...
+[18:02:46]    ✅ Success: 134 dialogue entries extracted
+[18:02:48] 
+[68/218] Processing B2156
+[18:02:48] Processing B2156: おもちゃショー　かくれんぼ...
+[18:02:49]    ✅ Success: 207 dialogue entries extracted
+[18:02:51] 
+[69/218] Processing B2150
+[18:02:51] Processing B2150: レゴ+プラレールで跨線橋作り...
+[18:02:52]    ✅ Success: 113 dialogue entries extracted
+[18:02:54] 
+[70/218] Processing B2151
+[18:02:54] Processing B2151: シルバニアDIYドールハウス...
+[18:02:54]    ❌ Failed: Invalid URL format
+[18:02:55] 
+[71/218] Processing B2147
+[18:02:55] Processing B2147: 粘土お弁当...
+[18:02:57]    ❌ Failed: HTTP 400
+[18:02:58] 
+[72/218] Processing B2144
+[18:02:58] Processing B2144: 蟻とキリギリス...
+[18:02:58]    ❌ Failed: HTTP 410
+[18:02:59] 
+[73/218] Processing B2146
+[18:02:59] Processing B2146: おもちゃショー　ステージショー...
+[18:03:00]    ✅ Success: 114 dialogue entries extracted
+[18:03:02] 
+[74/218] Processing B2148
+[18:03:02] Processing B2148: サンサンカレー...
+[18:03:03]    ✅ Success: 170 dialogue entries extracted
+[18:03:04] 
+[75/218] Processing B2145
+[18:03:04] Processing B2145: アソビスキー...
+[18:03:06]    ✅ Success: 146 dialogue entries extracted
+[18:03:06] 
+📊 Progress Report (75/218):
+[18:03:06]    Success: 62
+[18:03:06]    Failed: 13
+[18:03:06]    Success Rate: 82.7%
+[18:03:06]    Dialogue Extracted: 7394 lines
+[18:03:07] 
+[76/218] Processing B2149
+[18:03:07] Processing B2149: スーパーのマナー...
+[18:03:08]    ✅ Success: 149 dialogue entries extracted
+[18:03:09] 
+[77/218] Processing B2143
+[18:03:09] Processing B2143: サンサンパフェ...
+[18:03:10]    ✅ Success: 8 dialogue entries extracted
+[18:03:11] 
+[78/218] Processing B2140
+[18:03:11] Processing B2140: トミカ博②...
+[18:03:13]    ❌ Failed: HTTP 400
+[18:03:14] 
+[79/218] Processing B2135
+[18:03:14] Processing B2135: comottoコラボ...
+[18:03:16]    ✅ Success: 205 dialogue entries extracted
+[18:03:18] 
+[80/218] Processing B2137
+[18:03:18] Processing B2137: 【タイアップ】トミカワールド3/3...
+[18:03:19]    ✅ Success: 4 dialogue entries extracted
+[18:03:20] 
+[81/218] Processing B2142
+[18:03:20] Processing B2142: 【タイアップ】シュライヒ_ダイノクエスト...
+[18:03:25]    ❌ Failed: HTTP 400
+[18:03:26] 
+[82/218] Processing B2134
+[18:03:26] Processing B2134: 右左どっち！？サマーバケーションアイス...
+[18:03:29]    ✅ Success: 136 dialogue entries extracted
+[18:03:30] 
+[83/218] Processing B2141
+[18:03:30] Processing B2141: プールマナー...
+[18:03:31]    ✅ Success: 162 dialogue entries extracted
+[18:03:33] 
+[84/218] Processing B2136
+[18:03:33] Processing B2136: サンサンクッキー...
+[18:03:34]    ✅ Success: 10 dialogue entries extracted
+[18:03:36] 
+[85/218] Processing B2132
+[18:03:36] Processing B2132: 【タイアップ】トミカワールド2/3...
+[18:03:37]    ✅ Success: 152 dialogue entries extracted
+[18:03:38] 
+[86/218] Processing B2130
+[18:03:38] Processing B2130: トミカ博①...
+[18:03:39]    ✅ Success: 9 dialogue entries extracted
+[18:03:41] 
+[87/218] Processing B2127
+[18:03:41] Processing B2127: 消火器水鉄砲...
+[18:03:41]    ❌ Failed: HTTP 410
+[18:03:42] 
+[88/218] Processing B2121
+[18:03:42] Processing B2121: よみうり②...
+[18:03:44]    ✅ Success: 147 dialogue entries extracted
+[18:03:46] 
+[89/218] Processing B2126
+[18:03:46] Processing B2126: レゴ+ギャビーでネコちゃんプール...
+[18:03:47]    ✅ Success: 116 dialogue entries extracted
+[18:03:48] 
+[90/218] Processing B2138
+[18:03:48] Processing B2138: ホイップる...
+[18:03:49]    ✅ Success: 166 dialogue entries extracted
+[18:03:50] 
+[91/218] Processing B2133
+[18:03:50] Processing B2133: 熱中症について...
+[18:03:51]    ❌ Failed: HTTP 400
+[18:03:53] 
+[92/218] Processing B2115
+[18:03:53] Processing B2115: 村川学園③...
+[18:03:54]    ✅ Success: 122 dialogue entries extracted
+[18:03:55] 
+[93/218] Processing B2120
+[18:03:55] Processing B2120: よみうり①...
+[18:03:56]    ✅ Success: 150 dialogue entries extracted
+[18:03:58] 
+[94/218] Processing B2129
+[18:03:58] Processing B2129: 【タイアップ】トミカワールド1/3...
+[18:03:59]    ✅ Success: 189 dialogue entries extracted
+[18:04:00] 
+[95/218] Processing B2128
+[18:04:00] Processing B2128: パウパト+レゴでウォータースライダー...
+[18:04:02]    ✅ Success: 137 dialogue entries extracted
+[18:04:04] 
+[96/218] Processing B2131
+[18:04:04] Processing B2131: レゴ夏祭り...
+[18:04:05]    ✅ Success: 17 dialogue entries extracted
+[18:04:07] 
+[97/218] Processing B2114
+[18:04:07] Processing B2114: 村川学園こども園②ダンス...
+[18:04:08]    ✅ Success: 101 dialogue entries extracted
+[18:04:10] 
+[98/218] Processing B2118
+[18:04:10] Processing B2118: トイレマナー...
+[18:04:11]    ✅ Success: 159 dialogue entries extracted
+[18:04:12] 
+[99/218] Processing B2113
+[18:04:12] Processing B2113: 村川学園こども園①(1日体験）...
+[18:04:14]    ✅ Success: 10 dialogue entries extracted
+[18:04:15] 
+[100/218] Processing B2139
+[18:04:15] Processing B2139: 牛乳パックアイス...
+[18:04:16]    ✅ Success: 9 dialogue entries extracted
+[18:04:16] 
+📊 Progress Report (100/218):
+[18:04:16]    Success: 83
+[18:04:16]    Failed: 17
+[18:04:16]    Success Rate: 83.0%
+[18:04:16]    Dialogue Extracted: 9552 lines
+[18:04:17] 
+[101/218] Processing B2119
+[18:04:17] Processing B2119: 大昆虫展...
+[18:04:19]    ✅ Success: 150 dialogue entries extracted
+[18:04:20] 
+[102/218] Processing B2107
+[18:04:20] Processing B2107: 【タイアップ】マテル_HW4本目...
+[18:04:20]    ❌ Failed: Invalid URL format
+[18:04:21] 
+[103/218] Processing B2108
+[18:04:21] Processing B2108: 【タイアップ】らくがキッズ2本目...
+[18:04:22]    ✅ Success: 12 dialogue entries extracted
+[18:04:23] 
+[104/218] Processing B2123
+[18:04:23] Processing B2123: おばけスイカとサンサンスイカ...
+[18:04:25]    ✅ Success: 11 dialogue entries extracted
+[18:04:26] 
+[105/218] Processing B2122
+[18:04:26] Processing B2122: モントラ+レゴでスライダーパーキング...
+[18:04:27]    ✅ Success: 127 dialogue entries extracted
+[18:04:28] 
+[106/218] Processing B2106
+[18:04:28] Processing B2106: 【タイアップ】味の素2本目...
+[18:04:29]    ✅ Success: 304 dialogue entries extracted
+[18:04:30] 
+[107/218] Processing B2105
+[18:04:30] Processing B2105: 【タイアップ】味の素1本目...
+[18:04:32]    ✅ Success: 302 dialogue entries extracted
+[18:04:33] 
+[108/218] Processing B2125
+[18:04:33] Processing B2125: サンサンかき氷...
+[18:04:34]    ✅ Success: 8 dialogue entries extracted
+[18:04:36] 
+[109/218] Processing B2104
+[18:04:36] Processing B2104: 【タイアップ】タカラトミー_パウパト...
+[18:04:39]    ✅ Success: 157 dialogue entries extracted
+[18:04:40] 
+[110/218] Processing B2103
+[18:04:40] Processing B2103: 【タイアップ】タカラトミー_ギャビーのお家...
+[18:04:42]    ✅ Success: 245 dialogue entries extracted
+[18:04:43] 
+[111/218] Processing B2102
+[18:04:43] Processing B2102: 【タイアップ】タカラトミー_ジョブレイバー1本目...
+[18:04:45]    ✅ Success: 130 dialogue entries extracted
+[18:04:46] 
+[112/218] Processing B2093
+[18:04:46] Processing B2093: ジョブレイバー+プラレール...
+[18:04:48]    ✅ Success: 104 dialogue entries extracted
+[18:04:49] 
+[113/218] Processing B2124
+[18:04:49] Processing B2124: 市販アイスでサンサンチャレンジ...
+[18:04:51]    ✅ Success: 155 dialogue entries extracted
+[18:04:53] 
+[114/218] Processing B2117
+[18:04:53] Processing B2117: 8番のりば...
+[18:04:54]    ✅ Success: 171 dialogue entries extracted
+[18:04:55] 
+[115/218] Processing B2112
+[18:04:55] Processing B2112: ハッピーセット 最強王図鑑...
+[18:04:57]    ✅ Success: 8 dialogue entries extracted
+[18:04:58] 
+[116/218] Processing B2101
+[18:04:58] Processing B2101: 【タイアップ】デアゴ2本目...
+[18:05:00]    ✅ Success: 420 dialogue entries extracted
+[18:05:01] 
+[117/218] Processing B2100
+[18:05:01] Processing B2100: 【タイアップ】リトルプラネット...
+[18:05:03]    ✅ Success: 4 dialogue entries extracted
+[18:05:04] 
+[118/218] Processing B2098
+[18:05:04] Processing B2098: 水風船プール恐竜発掘対決...
+[18:05:05]    ✅ Success: 150 dialogue entries extracted
+[18:05:06] 
+[119/218] Processing B2111
+[18:05:06] Processing B2111: 踏切マナー...
+[18:05:08]    ✅ Success: 156 dialogue entries extracted
+[18:05:09] 
+[120/218] Processing B2110
+[18:05:09] Processing B2110: ミスドサンサンアレンジドーナツ...
+[18:05:10]    ✅ Success: 125 dialogue entries extracted
+[18:05:11] 
+[121/218] Processing B2099
+[18:05:11] Processing B2099: ダンゴムシおうち作り対決...
+[18:05:12]    ✅ Success: 169 dialogue entries extracted
+[18:05:14] 
+[122/218] Processing B2097
+[18:05:14] Processing B2097: サンサンアイスキャンディ...
+[18:05:15]    ✅ Success: 146 dialogue entries extracted
+[18:05:17] 
+[123/218] Processing B2096
+[18:05:17] Processing B2096: 虫扱いマナー...
+[18:05:19]    ✅ Success: 166 dialogue entries extracted
+[18:05:21] 
+[124/218] Processing B2088
+[18:05:21] Processing B2088: 身体測定...
+[18:05:22]    ✅ Success: 133 dialogue entries extracted
+[18:05:24] 
+[125/218] Processing B2095
+[18:05:24] Processing B2095: 恐竜ダンボールトラック...
+[18:05:25]    ✅ Success: 163 dialogue entries extracted
+[18:05:25] 
+📊 Progress Report (125/218):
+[18:05:25]    Success: 107
+[18:05:25]    Failed: 18
+[18:05:25]    Success Rate: 85.6%
+[18:05:25]    Dialogue Extracted: 13068 lines
+[18:05:26] 
+[126/218] Processing B2094
+[18:05:26] Processing B2094: お風呂嫌い鬼ごっこ...
+[18:05:28]    ✅ Success: 174 dialogue entries extracted
+[18:05:29] 
+[127/218] Processing B2089
+[18:05:29] Processing B2089: サンサンアレンジトースト...
+[18:05:31]    ✅ Success: 10 dialogue entries extracted
+[18:05:32] 
+[128/218] Processing B2092
+[18:05:32] Processing B2092: ハッピーセット（シンカリオン）...
+[18:05:33]    ✅ Success: 166 dialogue entries extracted
+[18:05:35] 
+[129/218] Processing B2087
+[18:05:35] Processing B2087: 【タイアップ】住宅情報館2/2本目...
+[18:05:36]    ✅ Success: 184 dialogue entries extracted
+[18:05:37] 
+[130/218] Processing B2086
+[18:05:37] Processing B2086: サンサンウォッチベルト...
+[18:05:39]    ✅ Success: 13 dialogue entries extracted
+[18:05:40] 
+[131/218] Processing B2091
+[18:05:40] Processing B2091: LaQ（サンサンドラゴン）...
+[18:05:42]    ✅ Success: 12 dialogue entries extracted
+[18:05:43] 
+[132/218] Processing B2085
+[18:05:43] Processing B2085: ひみつのおるすばんマナー...
+[18:05:44]    ✅ Success: 184 dialogue entries extracted
+[18:05:46] 
+[133/218] Processing B2066
+[18:05:46] Processing B2066: 【タイアップ】マテル_ホットウィール&ジュラシックワールド...
+[18:05:47]    ❌ Failed: HTTP 400
+[18:05:49] 
+[134/218] Processing B2084
+[18:05:49] Processing B2084: 恐竜専門歯医者さん...
+[18:05:50]    ✅ Success: 5 dialogue entries extracted
+[18:05:51] 
+[135/218] Processing B2081
+[18:05:51] Processing B2081: 【タイアップ】住宅情報感1/2本目...
+[18:05:52]    ✅ Success: 157 dialogue entries extracted
+[18:05:54] 
+[136/218] Processing B2080
+[18:05:54] Processing B2080: 手洗い習慣でウイルス対策...
+[18:05:56]    ✅ Success: 159 dialogue entries extracted
+[18:05:57] 
+[137/218] Processing B2082
+[18:05:57] Processing B2082: プラレール博 2本目...
+[18:05:58]    ✅ Success: 142 dialogue entries extracted
+[18:05:59] 
+[138/218] Processing B2071
+[18:05:59] Processing B2071: ハッピーセットトミカ...
+[18:06:01]    ✅ Success: 9 dialogue entries extracted
+[18:06:02] 
+[139/218] Processing B2078
+[18:06:02] Processing B2078: ダンボールかくれんぼ　電子レンジ...
+[18:06:04]    ✅ Success: 11 dialogue entries extracted
+[18:06:05] 
+[140/218] Processing B2073
+[18:06:05] Processing B2073: 車マナー...
+[18:06:05]    ✅ Success: 143 dialogue entries extracted
+[18:06:07] 
+[141/218] Processing B2077
+[18:06:07] Processing B2077: ユニトロボーン...
+[18:06:07]    ❌ Failed: Invalid URL format
+[18:06:08] 
+[142/218] Processing B2053
+[18:06:08] Processing B2053: 【タイアップ】びーくるまとめ（1本目&2本目）...
+[18:06:08]    ❌ Failed: Invalid URL format
+[18:06:10] 
+[143/218] Processing B2051
+[18:06:10] Processing B2051: エレベーターマナー...
+[18:06:10]    ❌ Failed: Invalid URL format
+[18:06:11] 
+[144/218] Processing B2033
+[18:06:11] Processing B2033: 【タイアップ】タカラトミー_アニア_3本目...
+[18:06:13]    ✅ Success: 192 dialogue entries extracted
+[18:06:14] 
+[145/218] Processing B2028
+[18:06:14] Processing B2028: 警察ごっこ トイレパニック 食べ過ぎ注意！...
+[18:06:14]    ❌ Failed: Invalid URL format
+[18:06:16] 
+[146/218] Processing B1908
+[18:06:16] Processing B1908: 【タイアップ】シュライヒ_エルドラド5/6話...
+[18:06:16]    ❌ Failed: Invalid URL format
+[18:06:18] 
+[147/218] Processing B1883
+[18:06:18] Processing B1883: ハッピーセット_なりきりマクドナルド...
+[18:06:19]    ✅ Success: 6 dialogue entries extracted
+[18:06:21] 
+[148/218] Processing B1862
+[18:06:21] Processing B1862: 【通常扱い】タカラトミー_リカちゃん 2/2本目...
+[18:06:23]    ✅ Success: 214 dialogue entries extracted
+[18:06:24] 
+[149/218] Processing B1874
+[18:06:24] Processing B1874: トミカ SASUKE...
+[18:06:25]    ✅ Success: 8 dialogue entries extracted
+[18:06:27] 
+[150/218] Processing B1851
+[18:06:27] Processing B1851: 動くガーデンオブバンバン工作...
+[18:06:29]    ✅ Success: 177 dialogue entries extracted
+[18:06:29] 
+📊 Progress Report (150/218):
+[18:06:29]    Success: 126
+[18:06:29]    Failed: 24
+[18:06:29]    Success Rate: 84.0%
+[18:06:29]    Dialogue Extracted: 15034 lines
+[18:06:30] 
+[151/218] Processing B1861
+[18:06:30] Processing B1861: 【タイアップ】タカラトミー_リカちゃん 1/2本目...
+[18:06:32]    ✅ Success: 257 dialogue entries extracted
+[18:06:33] 
+[152/218] Processing B1852
+[18:06:33] Processing B1852: レゴピンボールゲーム...
+[18:06:35]    ✅ Success: 8 dialogue entries extracted
+[18:06:37] 
+[153/218] Processing B1847
+[18:06:37] Processing B1847: サンサンおもちゃショーお出かけ(仮)...
+[18:06:39]    ✅ Success: 8 dialogue entries extracted
+[18:06:40] 
+[154/218] Processing B1843
+[18:06:40] Processing B1843: ビー玉ボブスレー...
+[18:06:42]    ✅ Success: 178 dialogue entries extracted
+[18:06:44] 
+[155/218] Processing B1838
+[18:06:44] Processing B1838: 【タイアップ】マテル_ホットウィール...
+[18:06:45]    ✅ Success: 342 dialogue entries extracted
+[18:06:47] 
+[156/218] Processing B1830
+[18:06:47] Processing B1830: マーブルアート...
+[18:06:49]    ✅ Success: 158 dialogue entries extracted
+[18:06:50] 
+[157/218] Processing B1827
+[18:06:50] Processing B1827: アンパンマンおうちで回転すし...
+[18:06:52]    ✅ Success: 173 dialogue entries extracted
+[18:06:54] 
+[158/218] Processing B1817
+[18:06:54] Processing B1817: 公園あそび_砂場で建設現場のはたらく車...
+[18:06:56]    ✅ Success: 147 dialogue entries extracted
+[18:06:57] 
+[159/218] Processing B1814
+[18:06:57] Processing B1814: 手作りアイス屋さんごっこ...
+[18:06:59]    ✅ Success: 178 dialogue entries extracted
+[18:07:01] 
+[160/218] Processing B1812
+[18:07:01] Processing B1812: おうちでさんくもピザ風クッキング...
+[18:07:05]    ✅ Success: 168 dialogue entries extracted
+[18:07:07] 
+[161/218] Processing B1807
+[18:07:07] Processing B1807: ガーデンオブバンバン懐中電灯工作...
+[18:07:08]    ✅ Success: 182 dialogue entries extracted
+[18:07:09] 
+[162/218] Processing B1805
+[18:07:09] Processing B1805: アニアきょうりゅうアイスケーキ...
+[18:07:11]    ✅ Success: 180 dialogue entries extracted
+[18:07:13] 
+[163/218] Processing B1795
+[18:07:13] Processing B1795: レゴ　動物クリニック救急車...
+[18:07:14]    ✅ Success: 185 dialogue entries extracted
+[18:07:16] 
+[164/218] Processing B1784
+[18:07:16] Processing B1784: レゴマリオ　ワンワンの突撃...
+[18:07:18]    ✅ Success: 183 dialogue entries extracted
+[18:07:20] 
+[165/218] Processing B1776
+[18:07:20] Processing B1776: イースターエッグ...
+[18:07:21]    ✅ Success: 248 dialogue entries extracted
+[18:07:22] 
+[166/218] Processing B1766
+[18:07:22] Processing B1766: すみっコスノードーム工作...
+[18:07:24]    ✅ Success: 10 dialogue entries extracted
+[18:07:26] 
+[167/218] Processing B1761
+[18:07:26] Processing B1761: アンパンマンレジスターではじめてのおつかい...
+[18:07:27]    ✅ Success: 131 dialogue entries extracted
+[18:07:29] 
+[168/218] Processing B1746
+[18:07:29] Processing B1746: レゴT-レックスの大脱走...
+[18:07:30]    ✅ Success: 149 dialogue entries extracted
+[18:07:32] 
+[169/218] Processing B1615
+[18:07:32] Processing B1615: 【タイアップ】りんどう湖2本目 8:00配信...
+[18:07:32]    ❌ Failed: Invalid URL format
+[18:07:33] 
+[170/218] Processing B1499
+[18:07:33] Processing B1499: マグロ解体パズル...
+[18:07:33]    ❌ Failed: Invalid URL format
+[18:07:35] 
+[171/218] Processing B1345
+[18:07:35] Processing B1345: グッズ　巾着...
+[18:07:35]    ❌ Failed: HTTP 410
+[18:07:36] 
+[172/218] Processing B1339
+[18:07:36] Processing B1339: くもりんが消えちゃった！？マジックトリックの簡単びっくり工作！...
+[18:07:37]    ❌ Failed: HTTP 410
+[18:07:37] 
+[173/218] Processing B1343
+[18:07:37] Processing B1343: ハロウィン目玉ゼリー...
+[18:07:38]    ❌ Failed: HTTP 410
+[18:07:40] 
+[174/218] Processing B1337
+[18:07:40] Processing B1337: 【仕掛け絵】ペーパータオルでマジックトリック！簡単なDIY実験！...
+[18:07:40]    ❌ Failed: HTTP 410
+[18:07:41] 
+[175/218] Processing B1330
+[18:07:41] Processing B1330: おえかき♪手遊びでサンサンとくもりんをびっくり簡単お絵かき！...
+[18:07:42]    ❌ Failed: HTTP 410
+[18:07:42] 
+📊 Progress Report (175/218):
+[18:07:42]    Success: 144
+[18:07:42]    Failed: 31
+[18:07:42]    Success Rate: 82.3%
+[18:07:42]    Dialogue Extracted: 17919 lines
+[18:07:43] 
+[176/218] Processing B1332
+[18:07:43] Processing B1332: グッズ探偵ごっこ　ツクモとプリルのぬいぐるみ...
+[18:07:43]    ❌ Failed: HTTP 410
+[18:07:45] 
+[177/218] Processing B1321
+[18:07:45] Processing B1321: 指びっくり工作...
+[18:07:45]    ❌ Failed: HTTP 410
+[18:07:47] 
+[178/218] Processing B1314
+[18:07:47] Processing B1314: 隠し扉の仕掛け絵...
+[18:07:48]    ❌ Failed: HTTP 410
+[18:07:49] 
+[179/218] Processing B1300
+[18:07:49] Processing B1300: 夜の学校にお化けが！？【怖い話】怪談の都市伝説...
+[18:07:50]    ❌ Failed: HTTP 410
+[18:07:51] 
+[180/218] Processing B1271
+[18:07:51] Processing B1271: ダンゴムシ　おうちづくり...
+[18:07:52]    ❌ Failed: HTTP 410
+[18:07:54] 
+[181/218] Processing B1266
+[18:07:54] Processing B1266: 【タカラトミー様案件】プレゼントペット...
+[18:07:54]    ❌ Failed: HTTP 410
+[18:07:56] 
+[182/218] Processing B1255
+[18:07:56] Processing B1255: 巨大シャボン玉チャレンジ（公園）orシャボン玉泡アート（室内）...
+[18:07:56]    ❌ Failed: HTTP 410
+[18:07:57] 
+[183/218] Processing B1250
+[18:07:57] Processing B1250: お家で世界一周旅行 キャラぱふぇコラボ...
+[18:07:58]    ❌ Failed: HTTP 410
+[18:07:59] 
+[184/218] Processing B1242
+[18:07:59] Processing B1242: 赤ちゃんお世話　お絵かきおままごと...
+[18:08:01]    ❌ Failed: HTTP 410
+[18:08:02] 
+[185/218] Processing B1238
+[18:08:02] Processing B1238: 氷の実験 発掘...
+[18:08:03]    ❌ Failed: HTTP 410
+[18:08:05] 
+[186/218] Processing B1229
+[18:08:05] Processing B1229: オモチャブ【2話・職業体験】熊谷オフィス...
+[18:08:05]    ❌ Failed: HTTP 410
+[18:08:06] 
+[187/218] Processing B1204
+[18:08:06] Processing B1204: パクパク折り紙...
+[18:08:07]    ❌ Failed: HTTP 410
+[18:08:09] 
+[188/218] Processing B1199
+[18:08:09] Processing B1199: 絶対にバレないベッドの隠し扉でかくれんぼ...
+[18:08:09]    ❌ Failed: HTTP 410
+[18:08:11] 
+[189/218] Processing B1195
+[18:08:11] Processing B1195: マイクラ 最強のダイヤ装備でゾンビ退治 色が浮き出る仕掛け絵...
+[18:08:11]    ❌ Failed: HTTP 410
+[18:08:13] 
+[190/218] Processing B1177
+[18:08:13] Processing B1177: 最強セキュリティハウスから脱獄対決 初心者vsプロチーター （ネオスキッズTVコラボ）...
+[18:08:13]    ❌ Failed: HTTP 410
+[18:08:15] 
+[191/218] Processing B1171
+[18:08:15] Processing B1171: ゾンビを助けろ！豪快手術ごっこ The Last of BANANA...
+[18:08:15]    ❌ Failed: HTTP 410
+[18:08:17] 
+[192/218] Processing B1136
+[18:08:17] Processing B1136: カラフルパズル 最強ロボットに変身...
+[18:08:17]    ❌ Failed: HTTP 410
+[18:08:18] 
+[193/218] Processing B1125
+[18:08:18] Processing B1125: あみだくじでお絵かき福笑い対決！...
+[18:08:19]    ❌ Failed: HTTP 410
+[18:08:20] 
+[194/218] Processing B1114
+[18:08:20] Processing B1114: 巨大トイレから脱出 知育クイズ...
+[18:08:21]    ❌ Failed: HTTP 410
+[18:08:22] 
+[195/218] Processing B1105
+[18:08:22] Processing B1105: ダンボールハウス作り対決《ダンボールハウス工作》...
+[18:08:22]    ❌ Failed: HTTP 410
+[18:08:24] 
+[196/218] Processing B1093
+[18:08:24] Processing B1093: 助けて！ゴミ収集車！！隠れたゴミや虫を捕まえてお片づけ《マルカ フリクション 清掃車》...
+[18:08:25]    ❌ Failed: HTTP 410
+[18:08:26] 
+[197/218] Processing B1088
+[18:08:26] Processing B1088: トイレに行きたい！トイレを簡単工作《便座作り》...
+[18:08:27]    ❌ Failed: HTTP 410
+[18:08:28] 
+[198/218] Processing B1078
+[18:08:28] Processing B1078: 鬼滅の刃 巨大赤鬼退治《風船ねずみ》...
+[18:08:29]    ❌ Failed: HTTP 410
+[18:08:30] 
+[199/218] Processing B1074
+[18:08:30] Processing B1074: 囚人ごっこ！最強セキュリティの刑務所から脱獄せよ！《船の工作》...
+[18:08:31]    ❌ Failed: HTTP 410
+[18:08:33] 
+[200/218] Processing B1061
+[18:08:33] Processing B1061: オバケ アイスを手作りお料理《オバケアイス》...
+[18:08:33]    ❌ Failed: HTTP 410
+[18:08:33] 
+📊 Progress Report (200/218):
+[18:08:33]    Success: 144
+[18:08:33]    Failed: 56
+[18:08:33]    Success Rate: 72.0%
+[18:08:33]    Dialogue Extracted: 17919 lines
+[18:08:35] 
+[201/218] Processing B1026
+[18:08:35] Processing B1026: 自販機に吸い込まれる〜！...
+[18:08:35]    ❌ Failed: HTTP 410
+[18:08:36] 
+[202/218] Processing B1016
+[18:08:36] Processing B1016: 恐竜 お世話...
+[18:08:37]    ❌ Failed: HTTP 401
+[18:08:38] 
+[203/218] Processing B1001
+[18:08:38] Processing B1001: 赤ちゃんの取り合いで大ケンカ！...
+[18:08:39]    ❌ Failed: HTTP 410
+[18:08:40] 
+[204/218] Processing B971
+[18:08:40] Processing B971: マーブルチョコ　シルエットクイズ...
+[18:08:42]    ❌ Failed: HTTP 410
+[18:08:43] 
+[205/218] Processing B920
+[18:08:43] Processing B920: 食べ過ぎ カラフル 仕掛け絵...
+[18:08:44]    ❌ Failed: HTTP 410
+[18:08:45] 
+[206/218] Processing B897
+[18:08:45] Processing B897: 飛び出る仕掛け絵 新幹線ドクターイエロー...
+[18:08:46]    ❌ Failed: HTTP 410
+[18:08:47] 
+[207/218] Processing B889
+[18:08:47] Processing B889: 牛乳パック 変身びっくり箱 工作...
+[18:08:48]    ❌ Failed: HTTP 410
+[18:08:49] 
+[208/218] Processing B880
+[18:08:49] Processing B880: お絵かき寸劇 はみがき 虫歯...
+[18:08:49]    ❌ Failed: HTTP 410
+[18:08:50] 
+[209/218] Processing B875
+[18:08:50] Processing B875: 色が浮き出る仕掛け絵 第2弾...
+[18:08:51]    ❌ Failed: HTTP 410
+[18:08:52] 
+[210/218] Processing B865
+[18:08:52] Processing B865: 仕掛け絵第６弾 色が消える 間違え探し...
+[18:08:53]    ❌ Failed: HTTP 410
+[18:08:54] 
+[211/218] Processing B851
+[18:08:54] Processing B851: お絵かき紙芝居 にんじんごぼうだいこん 好き嫌いしないで野菜を食べよう...
+[18:08:55]    ❌ Failed: HTTP 410
+[18:08:56] 
+[212/218] Processing B843
+[18:08:56] Processing B843: びっくり絵 仕掛け絵 第三弾...
+[18:08:57]    ❌ Failed: HTTP 410
+[18:08:58] 
+[213/218] Processing B837
+[18:08:58] Processing B837: はみがきのうた...
+[18:08:58]    ❌ Failed: Invalid URL format
+[18:09:00] 
+[214/218] Processing B832
+[18:09:00] Processing B832: アニア 恐竜の絵描き歌(ティラノ・トリケラ・プテラノ)...
+[18:09:01]    ❌ Failed: HTTP 410
+[18:09:02] 
+[215/218] Processing B825
+[18:09:02] Processing B825: お絵描き紙芝居 おえかきアーティスト 【うさぎとかめ】...
+[18:09:02]    ❌ Failed: HTTP 410
+[18:09:03] 
+[216/218] Processing B820
+[18:09:03] Processing B820: サンサンくもりんのびっくり絵 仕掛け絵 【お絵かき工作】...
+[18:09:04]    ❌ Failed: HTTP 410
+[18:09:05] 
+[217/218] Processing B805
+[18:09:05] Processing B805: アンパンマン らくがき教室ももたろう...
+[18:09:06]    ❌ Failed: HTTP 410
+[18:09:07] 
+[218/218] Processing B797
+[18:09:07] Processing B797: スイスイおえかき ドラえもん...
+[18:09:08]    ❌ Failed: HTTP 401
+[18:09:10] 
+================================================================================
+[18:09:10] COMPLETE EXTRACTION FINISHED
+[18:09:10] ================================================================================
+[18:09:10] 📊 FINAL RESULTS:
+[18:09:10]    Scripts processed: 218
+[18:09:10]    Successful extractions: 144
+[18:09:10]    Failed extractions: 74
+[18:09:10]    Success rate: 66.1%
+[18:09:10]    Total dialogue lines extracted: 17919
+[18:09:10] ================================================================================
