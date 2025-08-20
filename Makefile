@@ -128,3 +128,24 @@ status:
 	@python3 -c "import gspread; print('✓ Installed')" 2>/dev/null || echo "✗ Missing"
 	@echo -n "Connection: "
 	@make health > /dev/null 2>&1 && echo "✓ Healthy" || echo "✗ Failed"
+
+# Deploy to Vercel with environment variables
+deploy:
+	@echo "Deploying to Vercel with environment variables..."
+	@if [ -z "$(VERCEL_TOKEN)" ]; then \
+		echo "❌ VERCEL_TOKEN not set. Get it from https://vercel.com/account/tokens"; \
+		exit 1; \
+	fi
+	@if [ ! -f .env ]; then \
+		echo "❌ .env file not found. Run 'make setup-env' first"; \
+		exit 1; \
+	fi
+	@echo "🚀 Deploying with DATABASE_URL..."
+	vercel --prod --token=$(VERCEL_TOKEN) -e DATABASE_URL="$$(grep DATABASE_URL .env | cut -d '=' -f2-)"
+
+# Setup Vercel project
+setup-vercel:
+	@echo "Setting up Vercel project..."
+	@which vercel > /dev/null || (echo "❌ Vercel CLI not installed. Run: npm i -g vercel" && exit 1)
+	vercel link
+	@echo "✅ Vercel project linked"
