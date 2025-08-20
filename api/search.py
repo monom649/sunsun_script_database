@@ -49,7 +49,7 @@ class handler(BaseHTTPRequestHandler):
                 # Search in real database from Dropbox
                 try:
                     # Dropbox direct download URL - unified structure database
-                    dropbox_url = os.environ.get('DATABASE_URL', 'https://www.dropbox.com/scl/fi/ofuqpug3tstgpdqu0dvcr/youtube_search_complete_all.db?rlkey=y4al959fd7tdozin51mc9yblz&st=4prlo6zj&dl=1')
+                    dropbox_url = os.environ.get('DATABASE_URL', 'https://www.dropbox.com/scl/fi/ofuqpug3tstgpdqu0dvcr/youtube_search_complete_all.db?rlkey=y4al959fd7tdozin51mc9yblz&st=eng7ag9l&dl=1')
                     
                     # Download database to temporary file
                     with tempfile.NamedTemporaryFile(delete=False, suffix='.db') as temp_db:
