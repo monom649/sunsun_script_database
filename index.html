@@ -3,168 +3,381 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>サンサンキッズTV 台本検索システム - 認証 v2</title>
+    <title>SunSun Kids TV スクリプト検索</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
+            line-height: 1.6;
+            color: #333;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0;
         }
-        .login-container {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            max-width: 400px;
-            width: 100%;
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
-        .header {
+        
+        header {
             text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .search-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             margin-bottom: 30px;
         }
-        .header h1 {
-            color: #333;
-            margin-bottom: 10px;
+        
+        .search-form {
+            display: grid;
+            gap: 20px;
         }
-        .header p {
-            color: #666;
-            margin: 0;
-        }
+        
         .form-group {
-            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
+        
         label {
-            display: block;
-            margin-bottom: 8px;
             font-weight: bold;
-            color: #333;
+            color: #555;
         }
-        input[type="password"] {
-            width: 100%;
+        
+        input, select {
             padding: 12px;
             border: 2px solid #ddd;
-            border-radius: 10px;
+            border-radius: 8px;
             font-size: 16px;
-            box-sizing: border-box;
+            transition: border-color 0.3s;
         }
-        input[type="password"]:focus {
+        
+        input:focus, select:focus {
             outline: none;
             border-color: #667eea;
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
-        .login-btn {
-            width: 100%;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+        
+        .search-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .search-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
-            padding: 15px;
-            border-radius: 10px;
+            padding: 15px 30px;
+            border-radius: 8px;
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.3s;
+            margin-top: 20px;
         }
-        .login-btn:hover {
+        
+        .search-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
         }
-        .error {
-            color: #d63031;
+        
+        .search-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .loading {
             text-align: center;
-            margin-top: 15px;
-            padding: 10px;
-            background: #ffe6e6;
-            border-radius: 5px;
-            display: none;
+            padding: 40px;
+            color: #666;
         }
-        .info {
-            background: #e8f4f8;
-            color: #2d3436;
-            padding: 15px;
+        
+        .results-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-top: 30px;
+        }
+        
+        .result-item {
+            border: 1px solid #eee;
             border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: #fafafa;
+            transition: all 0.3s;
+        }
+        
+        .result-item:hover {
+            background: #f0f8ff;
+            border-color: #667eea;
+            transform: translateY(-1px);
+        }
+        
+        .result-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .result-meta {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+        
+        .result-dialogue {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            font-style: italic;
+            line-height: 1.8;
+        }
+        
+        .character-name {
+            font-weight: bold;
+            color: #764ba2;
+        }
+        
+        .error {
+            background: #fff5f5;
+            border: 1px solid #fed7d7;
+            color: #c53030;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .stats {
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 8px;
             margin-bottom: 20px;
             text-align: center;
-            font-size: 14px;
+            color: #4a5568;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .search-card, .results-card {
+                padding: 20px;
+            }
+            
+            .search-options {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <div class="header">
-            <h1>🎬 サンサンキッズTV</h1>
-            <p>台本検索システム</p>
+    <div class="container">
+        <header>
+            <h1>🌞 SunSun Kids TV</h1>
+            <p class="subtitle">スクリプト検索システム</p>
+        </header>
+        
+        <div class="search-card">
+            <form class="search-form" id="searchForm">
+                <div class="form-group">
+                    <label for="keyword">🔍 検索キーワード</label>
+                    <input type="text" id="keyword" name="keyword" placeholder="セリフやタイトルを入力してください..." required>
+                </div>
+                
+                <div class="search-options">
+                    <div class="form-group">
+                        <label for="searchType">📝 検索対象</label>
+                        <select id="searchType" name="searchType">
+                            <option value="all">すべて</option>
+                            <option value="title_only">タイトルのみ</option>
+                            <option value="dialogue_only">セリフのみ</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="characterFilter">👤 キャラクター</label>
+                        <input type="text" id="characterFilter" name="characterFilter" placeholder="サンサン、くもりん など">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sortOrder">📊 並び順</label>
+                        <select id="sortOrder" name="sortOrder">
+                            <option value="management_id_asc">作品ID順 (昇順)</option>
+                            <option value="management_id_desc">作品ID順 (降順)</option>
+                            <option value="relevance">関連度順</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="limit">📄 表示件数</label>
+                        <select id="limit" name="limit">
+                            <option value="20">20件</option>
+                            <option value="50" selected>50件</option>
+                            <option value="100">100件</option>
+                            <option value="200">200件</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button type="submit" class="search-btn" id="searchBtn">
+                    🚀 検索実行
+                </button>
+            </form>
         </div>
         
-        <div class="info">
-            🔐 このシステムは社内スタッフ専用です
-        </div>
-        
-        <form id="loginForm">
-            <div class="form-group">
-                <label for="password">パスワード：</label>
-                <input type="password" id="password" placeholder="パスワードを入力してください" required>
-            </div>
-            
-            <button type="submit" class="login-btn">🔓 ログイン</button>
-        </form>
-        
-        <div id="error" class="error"></div>
+        <div id="results"></div>
     </div>
-
+    
     <script>
-        // 簡易パスワード設定（実際の運用では環境変数等を使用）
-        const validPasswords = ['sun_test'];
+        const searchForm = document.getElementById('searchForm');
+        const searchBtn = document.getElementById('searchBtn');
+        const resultsDiv = document.getElementById('results');
         
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
+        searchForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            const password = document.getElementById('password').value;
-            const errorDiv = document.getElementById('error');
+            const formData = new FormData(searchForm);
+            const searchData = {
+                keyword: formData.get('keyword').trim(),
+                search_type: formData.get('searchType'),
+                character_filter: formData.get('characterFilter').trim(),
+                sort_order: formData.get('sortOrder'),
+                limit: parseInt(formData.get('limit'))
+            };
             
-            if (validPasswords.includes(password)) {
-                // 認証成功 - セッション情報を保存
-                sessionStorage.setItem('sunsun_auth', 'true');
-                sessionStorage.setItem('sunsun_auth_time', Date.now().toString());
+            if (!searchData.keyword) {
+                showError('キーワードを入力してください。');
+                return;
+            }
+            
+            showLoading();
+            
+            try {
+                const response = await fetch('/api/search', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(searchData)
+                });
                 
-                // メインページにリダイレクト
-                window.location.href = '/search.html';
-            } else {
-                // 認証失敗
-                errorDiv.textContent = 'パスワードが正しくありません';
-                errorDiv.style.display = 'block';
-                document.getElementById('password').value = '';
-                document.getElementById('password').focus();
+                const result = await response.json();
+                
+                if (result.success) {
+                    showResults(result.data, result.total_count, searchData);
+                } else {
+                    showError(result.error || '検索中にエラーが発生しました。');
+                }
+            } catch (error) {
+                console.error('Search error:', error);
+                showError('検索中にエラーが発生しました: ' + error.message);
             }
         });
         
-        // ページ読み込み時の処理
-        document.addEventListener('DOMContentLoaded', function() {
-            // 既に認証済みの場合はメインページにリダイレクト
-            const auth = sessionStorage.getItem('sunsun_auth');
-            const authTime = sessionStorage.getItem('sunsun_auth_time');
+        function showLoading() {
+            searchBtn.disabled = true;
+            searchBtn.textContent = '🔄 検索中...';
+            resultsDiv.innerHTML = `
+                <div class="results-card">
+                    <div class="loading">
+                        <h3>🔍 検索中...</h3>
+                        <p>データベースを検索しています。しばらくお待ちください。</p>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function showResults(results, totalCount, searchData) {
+            searchBtn.disabled = false;
+            searchBtn.textContent = '🚀 検索実行';
             
-            if (auth === 'true' && authTime) {
-                const now = Date.now();
-                const authTimestamp = parseInt(authTime);
-                const hoursPassed = (now - authTimestamp) / (1000 * 60 * 60);
-                
-                // 24時間以内なら自動ログイン
-                if (hoursPassed < 24) {
-                    window.location.href = '/search.html';
-                } else {
-                    // 認証期限切れ
-                    sessionStorage.removeItem('sunsun_auth');
-                    sessionStorage.removeItem('sunsun_auth_time');
-                }
+            if (!results || results.length === 0) {
+                resultsDiv.innerHTML = `
+                    <div class="results-card">
+                        <h3>📭 検索結果なし</h3>
+                        <p>「${searchData.keyword}」に一致する結果が見つかりませんでした。</p>
+                        <p>別のキーワードで試してみてください。</p>
+                    </div>
+                `;
+                return;
             }
             
-            // パスワードフィールドにフォーカス
-            document.getElementById('password').focus();
-        });
+            const resultsHtml = `
+                <div class="results-card">
+                    <div class="stats">
+                        📊 「${searchData.keyword}」の検索結果: ${totalCount}件中${results.length}件を表示
+                    </div>
+                    ${results.map(item => `
+                        <div class="result-item">
+                            <div class="result-title">${escapeHtml(item.title || 'タイトル不明')}</div>
+                            <div class="result-meta">
+                                📺 作品ID: ${escapeHtml(item.management_id || 'ID不明')} | 
+                                👤 <span class="character-name">${escapeHtml(item.character_name || '不明')}</span>
+                            </div>
+                            <div class="result-dialogue">
+                                ${escapeHtml(item.dialogue_text || 'セリフデータなし')}
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            resultsDiv.innerHTML = resultsHtml;
+        }
+        
+        function showError(message) {
+            searchBtn.disabled = false;
+            searchBtn.textContent = '🚀 検索実行';
+            resultsDiv.innerHTML = `
+                <div class="results-card">
+                    <div class="error">
+                        ❌ エラー: ${escapeHtml(message)}
+                    </div>
+                </div>
+            `;
+        }
+        
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        // 初期フォーカス
+        document.getElementById('keyword').focus();
     </script>
 </body>
 </html>
