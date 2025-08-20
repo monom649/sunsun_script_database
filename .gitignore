@@ -1,1 +1,88 @@
-*.db
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Service account credentials
+*.json
+credentials/
+keys/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+.env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Test coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Output files
+output/
+results/
+*.csv
+!.env.example
+
+# JSON files (except package.json and specific allowed files)
+*.json
+!package.json
+!vercel.json
+!tsconfig.json
+!.vscode/settings.json
+
+# Additional security patterns
+*key*
+*secret*
+*token*
+*credential*
+client_secret_*
+service-account-*
+
+# Dropbox links and API keys
+*rlkey*
+*dropbox*key*
+
+# macOS metadata
+._*
+.DS_Store

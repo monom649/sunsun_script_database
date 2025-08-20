@@ -23,7 +23,7 @@ class handler(BaseHTTPRequestHandler):
             
             try:
                 # Dropbox direct download URL
-                dropbox_url = 'https://www.dropbox.com/scl/fi/ofuqpug3tstgpdqu0dvcr/youtube_search_complete_all.db?rlkey=y4al959fd7tdozin51mc9yblz&st=juxz0zgt&dl=1'
+                dropbox_url = os.environ.get('DATABASE_URL', 'DATABASE_URL_NOT_SET')
                 
                 # Download database to temporary file
                 with tempfile.NamedTemporaryFile(delete=False, suffix='.db') as temp_db:
