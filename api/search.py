@@ -60,26 +60,30 @@ class handler(BaseHTTPRequestHandler):
                     conn = sqlite3.connect(db_path)
                     cursor = conn.cursor()
                     
-                    # Build WHERE clause - using unified table structure
+                    # Build WHERE clause - using unified table structure with instruction filtering
                     if search_type == 'title_only':
                         # Only search in titles
                         base_where = "WHERE s.title LIKE ?"
                         where_params = [f'%{keyword}%']
                     elif search_type == 'dialogue_only':
-                        # Search ONLY in dialogue text and character names, NOT in titles
-                        base_where = """WHERE LENGTH(cdu.character_name) > 0 AND LENGTH(cdu.dialogue_text) > 0 AND (
+                        # Search ONLY in dialogue text and character names, NOT in titles, exclude instructions
+                        base_where = """WHERE cdu.is_instruction = 0 AND LENGTH(cdu.character_name) > 0 AND LENGTH(cdu.dialogue_text) > 0 AND (
                             cdu.dialogue_text LIKE ? OR cdu.character_name LIKE ?
                         )"""
                         where_params = [f'%{keyword}%', f'%{keyword}%']
                     else:
-                        # Search all fields (default)
-                        base_where = "WHERE (cdu.dialogue_text LIKE ? OR cdu.character_name LIKE ? OR s.title LIKE ? OR cdu.filming_audio_instructions LIKE ?)"
-                        where_params = [f'%{keyword}%', f'%{keyword}%', f'%{keyword}%', f'%{keyword}%']
+                        # Search all fields (default) but exclude filming instructions from results
+                        base_where = "WHERE (cdu.is_instruction = 0 AND (cdu.dialogue_text LIKE ? OR cdu.character_name LIKE ?) OR s.title LIKE ?)"
+                        where_params = [f'%{keyword}%', f'%{keyword}%', f'%{keyword}%']
                     
-                    # Add character filter
+                    # Add character filter (ensure it only applies to non-instruction data)
                     if character_filter:
-                        base_where += " AND cdu.character_name LIKE ?"
-                        where_params.append(f'%{character_filter}%')
+                        if search_type == 'title_only':
+                            # For title search, we don't filter by character since titles don't have characters
+                            pass
+                        else:
+                            base_where += " AND cdu.character_name LIKE ?"
+                            where_params.append(f'%{character_filter}%')
                     
                     # First, get total count using unified structure
                     count_query = f"""
@@ -105,34 +109,35 @@ class handler(BaseHTTPRequestHandler):
                         cursor.execute(title_query, [f'%{keyword}%'])
                         debug_info['title_matches'] = cursor.fetchone()[0]
                         
-                        # Count dialogue matches (dialogue text and character names only)  
+                        # Count dialogue matches (dialogue text and character names only, exclude instructions)  
                         dialogue_query = f"""
                         SELECT COUNT(*) 
                         FROM character_dialogue_unified cdu
                         JOIN scripts s ON cdu.script_id = s.id
-                        WHERE LENGTH(cdu.character_name) > 0 AND LENGTH(cdu.dialogue_text) > 0 AND (
+                        WHERE cdu.is_instruction = 0 AND LENGTH(cdu.character_name) > 0 AND LENGTH(cdu.dialogue_text) > 0 AND (
                             cdu.dialogue_text LIKE ? OR cdu.character_name LIKE ?
                         )
                         """
                         cursor.execute(dialogue_query, [f'%{keyword}%', f'%{keyword}%'])
                         debug_info['dialogue_matches'] = cursor.fetchone()[0]
                         
-                        # Count instruction matches (filming_audio_instructions)
+                        # Count instruction matches (hidden from main results but shown in debug)
                         instruction_query = f"""
                         SELECT COUNT(*) 
                         FROM character_dialogue_unified cdu
                         JOIN scripts s ON cdu.script_id = s.id
-                        WHERE cdu.filming_audio_instructions LIKE ?
+                        WHERE cdu.is_instruction = 1 AND (cdu.dialogue_text LIKE ? OR cdu.character_name LIKE ?)
                         """
-                        cursor.execute(instruction_query, [f'%{keyword}%'])
-                        debug_info['instruction_matches'] = cursor.fetchone()[0]
+                        cursor.execute(instruction_query, [f'%{keyword}%', f'%{keyword}%'])
+                        debug_info['instruction_matches_hidden'] = cursor.fetchone()[0]
                     
-                    # Then get paginated results using unified structure
+                    # Then get paginated results using unified structure (instructions are filtered out)
                     data_query = f"""
                     SELECT s.management_id, s.title, s.broadcast_date, cdu.character_name, cdu.dialogue_text, 
-                           cdu.filming_audio_instructions, s.script_url, cdu.row_number,
-                           CASE WHEN LENGTH(cdu.character_name) > 0 AND LENGTH(cdu.dialogue_text) > 0 THEN 'dialogue' 
-                                ELSE 'instruction' END as content_type
+                           cdu.filming_audio_instructions, s.script_url, cdu.row_number, cdu.is_instruction,
+                           CASE WHEN cdu.is_instruction = 0 AND LENGTH(cdu.character_name) > 0 AND LENGTH(cdu.dialogue_text) > 0 THEN 'dialogue' 
+                                WHEN cdu.is_instruction = 1 THEN 'instruction'
+                                ELSE 'other' END as content_type
                     FROM character_dialogue_unified cdu
                     JOIN scripts s ON cdu.script_id = s.id
                     {base_where}
@@ -157,12 +162,14 @@ class handler(BaseHTTPRequestHandler):
                     # Clean up temporary file
                     os.unlink(db_path)
                     
-                    # Format results using unified structure
+                    # Format results using unified structure (instructions should be filtered out by query)
                     formatted_results = []
                     for row in results:
-                        content_type = row[8] if len(row) > 8 else 'dialogue'
+                        is_instruction = row[8] if len(row) > 8 else 0
+                        content_type = row[9] if len(row) > 9 else 'dialogue'
                         
-                        if content_type == 'dialogue':
+                        # Only include non-instruction entries in results
+                        if is_instruction == 0:
                             # Character dialogue entry
                             formatted_results.append({
                                 'management_id': row[0] or '',
@@ -171,27 +178,15 @@ class handler(BaseHTTPRequestHandler):
                                 'character_name': row[3] or '',
                                 'dialogue': row[4] or '',
                                 'voice_instruction': '',
-                                'filming_instruction': row[5] or '',  # filming_audio_instructions
+                                'filming_instruction': row[5] or '',  # filming_audio_instructions (legacy field)
                                 'editing_instruction': '',
                                 'script_url': row[6] or '',
                                 'row_number': row[7] or 0,
-                                'content_type': 'dialogue'
+                                'content_type': 'dialogue',
+                                'is_instruction': False
                             })
-                        else:
-                            # Instruction entry
-                            formatted_results.append({
-                                'management_id': row[0] or '',
-                                'title': row[1] or '',
-                                'broadcast_date': row[2] or '',
-                                'character_name': '',
-                                'dialogue': '',
-                                'voice_instruction': '',
-                                'filming_instruction': row[5] or '',  # filming_audio_instructions
-                                'editing_instruction': '',
-                                'script_url': row[6] or '',
-                                'row_number': row[7] or 0,
-                                'content_type': 'instruction'
-                            })
+                        # Instructions are now hidden from search results
+                        # but preserved in database for data integrity
                     
                     response = {
                         'success': True,
@@ -206,7 +201,7 @@ class handler(BaseHTTPRequestHandler):
                         'total_count': total_count,
                         'has_more': total_count > (offset + len(formatted_results)),
                         'debug_info': debug_info if debug_info else None,
-                        'database_info': f'検索対象: 統一構造データベース（セリフ検索時は関連タイトル・制作指示からもセリフを表示）'
+                        'database_info': f'検索対象: 統一構造データベース（撮影指示は除外、セリフのみ表示）'
                     }
                     
                 except Exception as db_error:

@@ -149,9 +149,13 @@
                     headerText += ' <span style="color: #666; font-size: 12px;">※さらに結果があります</span>';
                 }
                 
-                // Add debug info if available for unified structure
+                // Add debug info if available for unified structure  
                 if (data.debug_info) {
-                    headerText += '<br><small style="color: #888;">内訳: タイトル' + (data.debug_info.title_matches || 0) + '件 + キャラクターセリフ' + (data.debug_info.dialogue_matches || 0) + '件 + 撮影・音声指示' + (data.debug_info.instruction_matches || 0) + '件</small>';
+                    headerText += '<br><small style="color: #888;">内訳: タイトル' + (data.debug_info.title_matches || 0) + '件 + キャラクターセリフ' + (data.debug_info.dialogue_matches || 0) + '件';
+                    if (data.debug_info.instruction_matches_hidden && data.debug_info.instruction_matches_hidden > 0) {
+                        headerText += ' (撮影指示' + data.debug_info.instruction_matches_hidden + '件は非表示)';
+                    }
+                    headerText += '</small>';
                 }
             } else {
                 headerText += '(' + data.count + '件)';
@@ -162,14 +166,14 @@
             for (var i = 0; i < data.results.length; i++) {
                 var result = data.results[i];
                 
-                // Determine border color based on content type
-                var borderColor = result.content_type === 'dialogue' ? '#28a745' : '#6c757d';
-                var bgColor = result.content_type === 'dialogue' ? '#f8fff8' : '#f8f9fa';
+                // Only display dialogue content - instructions are now hidden
+                var borderColor = '#28a745';  // Green for dialogue
+                var bgColor = '#f8fff8';      // Light green background
                 
                 html += '<div style="border: 2px solid ' + borderColor + '; margin: 10px; padding: 10px; background: ' + bgColor + ';">';
                 html += '<div style="display: flex; justify-content: space-between; align-items: center;">';
                 html += '<h4 style="margin: 0;">' + result.title + ' (' + result.management_id + ')</h4>';
-                html += '<span style="background: ' + borderColor + '; color: white; padding: 3px 8px; border-radius: 12px; font-size: 11px; font-weight: bold;">' + (result.content_type === 'dialogue' ? 'キャラクター' : '撮影・音声指示') + '</span>';
+                html += '<span style="background: ' + borderColor + '; color: white; padding: 3px 8px; border-radius: 12px; font-size: 11px; font-weight: bold;">キャラクターセリフ</span>';
                 html += '</div>';
                 
                 // Add year/month info for better categorization
@@ -185,18 +189,11 @@
                 }
                 html += '<p><strong>#️⃣ 行番号:</strong> ' + (result.row_number || 'なし') + '</p>';
                 
-                if (result.content_type === 'dialogue') {
-                    // Character dialogue display
-                    html += '<div style="background: white; padding: 10px; border-radius: 5px; margin: 10px 0;">';
-                    html += '<p><strong>🎭 キャラクター:</strong> <span style="background: #007bff; color: white; padding: 2px 6px; border-radius: 3px;">' + (result.character_name || 'なし') + '</span></p>';
-                    html += '<p><strong>💬 セリフ:</strong> <span style="font-weight: normal; line-height: 1.4;">' + (result.dialogue || 'なし') + '</span></p>';
-                    html += '</div>';
-                } else {
-                    // Instruction display
-                    html += '<div style="background: white; padding: 10px; border-radius: 5px; margin: 10px 0;">';
-                    html += '<p><strong>🎬 撮影・音声指示:</strong> <span style="font-weight: normal; line-height: 1.4;">' + (result.filming_instruction || 'なし') + '</span></p>';
-                    html += '</div>';
-                }
+                // Only display character dialogue (instructions are filtered out by API)
+                html += '<div style="background: white; padding: 10px; border-radius: 5px; margin: 10px 0;">';
+                html += '<p><strong>🎭 キャラクター:</strong> <span style="background: #007bff; color: white; padding: 2px 6px; border-radius: 3px;">' + (result.character_name || 'なし') + '</span></p>';
+                html += '<p><strong>💬 セリフ:</strong> <span style="font-weight: normal; line-height: 1.4;">' + (result.dialogue || 'なし') + '</span></p>';
+                html += '</div>';
                 
                 html += '</div>';
             }
